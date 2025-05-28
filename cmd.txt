@@ -1,0 +1,2 @@
+./vendor/bin/phpunit Tests/Framework/AppTest.php
+./vendor/bin/phpcs src/Framework/App.php 
