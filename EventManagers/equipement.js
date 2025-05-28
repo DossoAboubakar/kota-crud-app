@@ -1,4 +1,4 @@
-export function deleteEquipe(id) {
+export function deleteEquipement(id) {
     console.log("Tentative de suppression...");
     if (confirm("Voulez-vous vraiment supprimer  #" + id + " des dossiers?")) {
       axios

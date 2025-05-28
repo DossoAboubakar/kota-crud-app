@@ -2,9 +2,10 @@ export function deleteAnnonceCmdt(id) {
     console.log("Tentative de suppression...");
     if (confirm("Voulez-vous vraiment supprimer  #" + id + " des années?")) {
       axios
-        .delete(`api/annonces/crudOps?id=${id}`)
+        .delete(`api/annoncesCmdts/crudOps?id=${id}`)
         .then(function (response) {
-          console.log(response)
+          console.log("id:",id);
+          console.log(response);
           const row = document.querySelector(`tr[data-id="${id}"]`);
           if (row) {
             row.remove();

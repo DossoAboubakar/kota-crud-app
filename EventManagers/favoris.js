@@ -11,6 +11,14 @@ const INNER_HTML = `<div style="display:flex ;">
                         ✅ Ajout effectué avec succès.
                         </div>
                     </div>`;
+const INNER_HTML_REFRESH = `<div style="display:flex ;">
+                        <div class="alert bg-dark text-white py-1 px-2 mb-0" style="font-size: 0.9rem; margin-right: 10px;">
+                          Veuillez rafraîchir pour voir les nouvelles données
+                        </div>
+                        <button id="btn-refresh" class="btn btn-sm btn-warning btn-rounded py-0 px-2" style="font-size: 0.8rem;">
+                        <i class="bi bi-arrow-repeat me-1"></i> Rafraîchir
+                        </button>
+                    </div>`;
 
 export function deleteFavoris(id) {
   if (confirm("Voulez-vous vraiment supprimer  #" + id + " des favoris?")) {
@@ -46,6 +54,9 @@ export function addFavoris() {
       console.log("addCategorie:", response);
       const alertArea = document.getElementById("alert-area");
       alertArea.innerHTML = INNER_HTML;
+      setTimeout(() => {
+        alertArea.innerHTML = INNER_HTML_REFRESH;
+      }, 3000);
     })
     .catch(function (error) {
       console.error("Erreur lors de l'ajout:", error);
@@ -108,5 +119,9 @@ export function collectEditFormData(e) {
   const id_annonce = document.getElementById("id_annonce").value;
   const date_ajout = document.getElementById("date_ajouter").value;
   const formData = new FormData();
+  formData.append("id_favoris", id);
+  formData.append("id_client", id_client);
+  formData.append("id_annonce", id_annonce);
+  formData.append("date_ajout", date_ajout);
   updateFavoris(formData);
 }

@@ -42,10 +42,13 @@ export class CategoriesEventListeners {
     });
   }
 
+  
+
   __invokListeners() {
     this.clickOnSubmitAddForm();
     this.clickOnEditBtns();
     this.clickOnSubmitUpdateForm();
     this.clickOnDeleteBtns();
+    
   }
 }

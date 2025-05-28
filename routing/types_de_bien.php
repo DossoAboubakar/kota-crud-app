@@ -12,7 +12,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             exit;
         }
         $id = (int)$_GET['id'];
-        $success = $operations->deleteItem('laclef_estimation', 'id_estimation', $id);
+        $success = $operations->deleteItem('laclef_typebien_detail', 'id_typebien_detail', $id);
         echo json_encode(['success' => $success]);
         break;
 

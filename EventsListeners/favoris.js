@@ -48,5 +48,6 @@ export class FavorisEventListeners {
     this.clickOnEditBtns();
     this.clickOnSubmitUpdateForm();
     this.clickOnDeleteBtns();
+    
   }
 }

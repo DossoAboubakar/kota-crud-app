@@ -9,7 +9,6 @@ export function deleteIndicateur(id) {
           if (row) {
             row.remove();
           }
-        
         })
         .catch(function (error) {
           console.error("Erreur lors de la suppression:", error);

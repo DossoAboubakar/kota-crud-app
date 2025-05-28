@@ -1,24 +1,42 @@
 <?php 
 
 use Application\CrudRepository\CrudRequests;
-$primary_key='id_commune';
-$table_name ='laclef_commune';
+$primary_key='id_demenagement';
+$table_name ='laclef_demenagement';
 $operations = new CrudRequests();
 $records = $operations->getAllDefault($table_name , $primary_key);
 $data_keys = [
-    'id_commune',
-    'libelle_commune',
-    'lat',
-    'long',
-    'id_ville'
+    'id_demenagement',
+    'nom',
+    'telephone',
+    'email',
+    'surface',
+    'nbpieces',
+    'datedemenagement',
+    'adresseactuelle',
+    'newadresse',
+    'description',
+    'etat_contact',
+    'date_crea',
+    'indicatif',
+    'pays'
 ];
 $page_title = 'Démenagements';
 $table_fields = [
     'Id',
-    'Libellé',
-    'Latitude',
-    'Longitude',
-    'Ville',
+    'Nom',
+    'Telephone',
+    'Email',
+    'Surface',
+    'Nbr Pieces',
+    'Date',
+    '@Actuelle',
+    'Nouvelle @',
+    'Description',
+    'Etat Contact',
+    'Date Création',
+    'Indicatif',
+    'Pays'
 ];
 $display_addBtn = false;
 $displayEditBtn = false;

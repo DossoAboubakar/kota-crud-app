@@ -6454,6 +6454,25 @@ CREATE TABLE `laclef_equipement` (
   `libelle_equipement` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+
+INSERT INTO `laclef_equipement` (`id_equipement`, `libelle_equipement`) VALUES
+(1, 'Ordinateur portable'),
+(2, 'Vidéo projecteur'),
+(3, 'Tableau interactif'),
+(4, 'Imprimante multifonction'),
+(5, 'Scanner'),
+(6, 'Routeur Wi-Fi'),
+(7, 'Clé USB 64 Go'),
+(8, 'Serveur NAS'),
+(9, 'Caméra de surveillance'),
+(10, 'Microphone sans fil'),
+(11, 'Écran LED 24 pouces'),
+(12, 'Onduleur'),
+(13, 'Switch réseau 24 ports'),
+(14, 'Climatisation'),
+(15, 'Chaise de bureau ergonomique');
+
+
 -- --------------------------------------------------------
 
 --
@@ -11058,6 +11077,35 @@ CREATE TABLE `laclef_recherche` (
   `etat_recherche` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+INSERT INTO `laclef_recherche` (
+  `id_recherche`, `id_user`, `nom_alerte`, `type_annonce`, `categorie_annonce`,
+  `nbappartement`, `nbmaison`, `nbparking`, `nbbox`, `nbloft`, `nbatelier`, `nbterrain`, `nbbatiment`, `nbimmeuble`,
+  `ville_bien1`, `commune_bien1`, `zone_bien1`, `Libelle1`,
+  `ville_bien2`, `commune_bien2`, `zone_bien2`, `Libelle2`,
+  `ville_bien3`, `commune_bien3`, `zone_bien3`, `Libelle3`,
+  `surface_min_terrain`, `surface_max_terrain`, `surface_min_bien`, `surface_max_bien`,
+  `nbpiece_bien`, `nbchambre_bien`, `budgetmin_bien`, `budgetmax_bien`,
+  `date_crea_bien`, `etat_recherche`
+) VALUES
+(1, 101, 'Alerte Appartement Abidjan', 'Vente', 'Appartement', 
+ '1', '0', '1', '0', '0', '0', '0', '0', '0',
+ 'Abidjan', 'Cocody', '2 Plateaux', 'Appartement 3 pièces',
+ 'Abidjan', 'Marcory', 'Zone 4', 'Appartement 2 pièces',
+ 'Abidjan', 'Yopougon', 'Sideci', 'Studio',
+ '50', '200', '60', '120', 
+ '3', '2', '30000000', '60000000',
+ '2025-05-28', 1),
+
+(2, 102, 'Recherche Terrain Bingerville', 'Achat', 'Terrain',
+ '0', '0', '0', '0', '0', '0', '1', '0', '0',
+ 'Abidjan', 'Bingerville', 'Eloka', 'Terrain constructible',
+ '', '', '', '',
+ '', '', '', '',
+ '200', '1000', '0', '0',
+ '0', '0', '5000000', '20000000',
+ '2025-05-25', 1);
+
+
 -- --------------------------------------------------------
 
 --
@@ -11118,6 +11166,21 @@ CREATE TABLE `laclef_relance` (
   `debut_affiche` varchar(255) NOT NULL,
   `fin_affiche` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+INSERT INTO `laclef_relance` (
+  `id_relance`, `id_annonce`, `id_vendeur`, `debut_relance`, `fin_relance`,
+  `nbcredit_relance`, `date_relance`, `etat_relance`, `debut_affiche`, `fin_affiche`
+) VALUES
+(1, 1001, 201, '2025-05-20 08:00:00', '2025-05-27 08:00:00', 
+ '5', '2025-05-20 07:55:00', 1, '2025-05-20', '2025-05-27'),
+
+(2, 1002, 202, '2025-05-25 12:00:00', '2025-06-01 12:00:00', 
+ '3', '2025-05-25 11:50:00', 1, '2025-05-25', '2025-06-01'),
+
+(3, 1003, 203, '2025-05-10 09:00:00', '2025-05-17 09:00:00', 
+ '2', '2025-05-10 08:45:00', 0, '2025-05-10', '2025-05-17');
+
 
 -- --------------------------------------------------------
 

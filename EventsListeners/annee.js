@@ -41,6 +41,8 @@ export class AnneeEventListeners {
     });
   }
 
+ 
+
   __invokListeners() {
     this.clickOnSubmitAddForm();
     this.clickOnEditBtns();

@@ -1,24 +1,17 @@
 <div id="alert-container"></div>
-
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
     <div class="d-flex justify-content-start align-items-center mx-4 mb-3 flex-wrap gap-2">
   <h3 class="card-title mb-0"><?= $page_title ?></h3>
-
   <div class="d-flex align-items-center gap-2">
     <?php if ($display_addBtn === true): ?>
       <button   ype="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
         <i class="bi bi-plus-circle"></i> Ajouter
       </button>
     <?php endif; ?>
-    
-
-    <div id="alert-area">
-    </div>
- 
-    </div>
+    <div id="alert-area"> </div>
 </div>
-
+</div>
         <div class="table-responsive p-3">
             <div class="card p-3 rounded shadow">
                 <table id="data-table" class="table table-hover mb-0">

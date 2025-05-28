@@ -131,7 +131,7 @@ try {
                 require('src/views/estimation-commodite.php');
                 break;
         case 'api/estimationsCmdt/crudOps':
-                        include('routing/estimation-commodite.php');
+                        include('routing/estimation-cmdt.php');
                         break;
         case 'Favoris':
                 require('src/views/favoris.php');

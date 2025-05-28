@@ -2,7 +2,7 @@ export function deleteEstimationCmdt(id) {
     console.log("Tentative de suppression...");
     if (confirm("Voulez-vous vraiment supprimer  #" + id + " des estimations?")) {
       axios
-        .delete(`api/estimations/crudOps?id=${id}`)
+        .delete(`api/estimationsCmdt/crudOps?id=${id}`)
         .then(function (response) {
           console.log(response)
           const row = document.querySelector(`tr[data-id="${id}"]`);
