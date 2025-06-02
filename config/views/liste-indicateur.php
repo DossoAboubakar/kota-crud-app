@@ -22,3 +22,4 @@ $table_fields = [
 $display_addBtn = true;
 $displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteIndicateur';
+$editBtn_selector = 'btn-editIndicateur';

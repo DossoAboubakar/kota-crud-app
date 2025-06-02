@@ -10,7 +10,7 @@ export class CategoriesActuEventListeners {
     const addmodalForm = document.querySelector("#addCategorieActuForm");
     addmodalForm?.addEventListener("submit", function (e) {
       e.preventDefault();
-      addCategorie();
+      addCategorieActu();
     });
   }
 

@@ -1,14 +1,17 @@
 <?php 
 
-use Application\CrudRepository\CrudRequests;
+use Application\CrudRepository\CrudImageAgence;
 $primary_key='id_image_annonce';
 $table_name ='laclef_image_agence';
-$operations = new CrudRequests();
-$records = $operations->getAllDefault($table_name , $primary_key);
+$operations = new CrudImageAgence();
+$records = $operations->getImageAgence();
 $data_keys = [
     'id_image_annonce',
-    'id_user',
-    'id_annonce',
+    'nom_client',
+    'prenom_client',
+    'tel_client',
+    'libelle_annonce',
+    'prix_annonce',
     'libelle_image',
     'date_crea'
 ];
@@ -16,11 +19,15 @@ $data_keys = [
 $page_title = 'Images des agences';
 $table_fields = [
     'Id',
-    'User',
+    'Nom',
+    'Prenom',
+    'Tel',
     'Annonce',
-    'Libelle',
+    'Prix',
+    'Image',
     'Date creation',
 ];
 $display_addBtn = true;
 $displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteImageAgence';
+$editBtn_selector = 'btn-editImageAgence';

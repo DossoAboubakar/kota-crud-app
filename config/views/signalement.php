@@ -35,3 +35,5 @@ $table_fields = [
 $display_addBtn = true;
 $displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteSignalement';
+$editBtn_selector = 'btn-editSignalement';
+

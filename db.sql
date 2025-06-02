@@ -10374,7 +10374,7 @@ CREATE TABLE `laclef_liste_indicateur` (
   `id_indic` int(11) NOT NULL,
   `pays` varchar(255) NOT NULL,
   `drapeau` varchar(255) NOT NULL,
-  `libelle` varchar(255) NOT NULL
+  `libelle` varchar(255) NOT NULLƒ
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -11311,6 +11311,19 @@ CREATE TABLE `laclef_transaction` (
   `titre_transaction` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+INSERT INTO `laclef_transaction` (`id_transaction`, `titre_transaction`) VALUES
+(1, 'Paiement des frais de scolarité'),
+(2, 'Achat de fournitures de bureau'),
+(3, 'Remboursement transport'),
+(4, 'Versement salaire enseignant'),
+(5, 'Achat de matériel informatique'),
+(6, 'Dépôt d’inscription'),
+(7, 'Règlement électricité'),
+(8, 'Abonnement internet'),
+(9, 'Remboursement avance'),
+(10, 'Participation à un séminaire');
+
+
 --
 -- Déchargement des données de la table `laclef_transaction`
 --
@@ -11330,6 +11343,19 @@ CREATE TABLE `laclef_typebien_detail` (
   `libelle_typebien_detail` varchar(255) NOT NULL,
   `image_typebien_detail` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+INSERT INTO `laclef_typebien_detail` (`id_typebien_detail`, `libelle_typebien_detail`, `image_typebien_detail`) VALUES
+(1, 'Appartement F3', 'appartement_f3.jpg'),
+(2, 'Studio meublé', 'studio_meuble.jpg'),
+(3, 'Villa avec piscine', 'villa_piscine.jpg'),
+(4, 'Maison de ville', 'maison_ville.jpg'),
+(5, 'Duplex moderne', 'duplex_modern.jpg'),
+(6, 'Chambre universitaire', 'chambre_universitaire.jpg'),
+(7, 'Bureau équipé', 'bureau_equipe.jpg'),
+(8, 'Magasin commercial', 'magasin_commercial.jpg'),
+(9, 'Entrepôt logistique', 'entrepot_logistique.jpg'),
+(10, 'Terrain constructible', 'terrain_constructible.jpg');
+
 
 --
 -- Déchargement des données de la table `laclef_typebien_detail`
@@ -11694,7 +11720,8 @@ ALTER TABLE `laclef_annee`
   ADD PRIMARY KEY (`id_annee`);
 
 --
--- Index pour la table `laclef_annonce`
+-- Index pour la table `
+`
 --
 ALTER TABLE `laclef_annonce`
   ADD PRIMARY KEY (`id_annonce`);

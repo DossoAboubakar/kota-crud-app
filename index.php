@@ -148,7 +148,7 @@ try {
         case 'ListeIndicateur':
                 require('src/views/liste-indicateur.php');
                 break;
-        case 'api/listeIndicateur/crudOps':
+        case 'api/listeIndicateurs/crudOps':
                         include('routing/liste-indicateur.php');
                         break;
         case 'ListeLocalisation':

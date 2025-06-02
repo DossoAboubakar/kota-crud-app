@@ -93,7 +93,7 @@ export function getCategorieById(id) {
 
 export function populateEditFormFields(data) {
   console.log("populateEditFormFields", data);
-  const data_keys = ["id_categorie", "libelle_categorie", "particulier", "pro"];
+  const data_keys = ["id_categorie", "libelle_categorie", "", "pro"];
   data_keys.forEach((element) => {
     const input = document.getElementById(element + "Field");
     if (input) {

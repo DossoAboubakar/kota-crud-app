@@ -20,3 +20,5 @@ $table_fields = [
 $display_addBtn = true;
 $displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteSituation';
+$editBtn_selector = 'btn-editSituation';
+

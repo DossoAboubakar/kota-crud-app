@@ -34,7 +34,7 @@ import { SituationEventListeners } from "./EventsListeners/situation.js";
 import { TypeDeBienEventListeners } from "./EventsListeners/types_de_bien.js";
 import { VendeurEventListeners } from "./EventsListeners/vendeur.js";
 import { VilleEventListeners } from "./EventsListeners/ville.js";
-
+import { TransactionEventListeners } from "./EventsListeners/transaction.js";
 /**
  * Executing Listeners
  */
@@ -69,6 +69,7 @@ new SaveEventListeners();
 new SignalementEventListeners();
 new SituationEventListeners();
 new TypeDeBienEventListeners();
+new TransactionEventListeners();
 new VendeurEventListeners();
 new VilleEventListeners();
 

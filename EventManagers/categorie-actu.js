@@ -28,29 +28,20 @@ export function deleteCategorieActu(id) {
 }
 
 export function addCategorieActu() {
-  const libelle = document.getElementById("libelle_categorie").value;
-  const image = document.getElementById("image_categorie").files[0];
-  const image1 = document.getElementById("image_categorie1").files[0];
-  const particulier = document.getElementById("particulier").value;
-  const pro = document.getElementById("pro").value;
+  const libelle = document.getElementById("libelle_categorie_actualites").value;
+  const image = document.getElementById("image_categorie_actualites").files[0];
   const formData = new FormData();
   formData.append("libelle", libelle);
   formData.append("image", image);
-  formData.append("image1", image1);
-  formData.append("particulier", particulier);
-  formData.append("pro", pro);
   axios
     .post("api/categoriesActu/crudOps", formData)
     .then(function (response) {
-      console.log("addCategorie:", response);
+      console.log("addCategorieActu:", response);
       const alertArea = document.getElementById("alert-area");
       alertArea.innerHTML = INNER_HTML;
 
-      document.getElementById("libelle_categorie").value = "";
-      document.getElementById("image_categorie").value = "";
-      document.getElementById("image_categorie1").value = "";
-      document.getElementById("particulier").value = "";
-      document.getElementById("pro").value = "";
+      document.getElementById("libelle_categorie_actualites").value = "";
+      document.getElementById("image_categorie_actualites").value = "";
     })
     .catch(function (error) {
       console.error("Erreur lors de l'ajout:", error);
@@ -75,6 +66,7 @@ export function updateCategorieActu(formData) {
 }
 
 export function getCategorieActuById(id) {
+  console.log("id", id);
   axios
     .get(`api/categoriesActu/crudOps`, {
       params: {
@@ -82,8 +74,8 @@ export function getCategorieActuById(id) {
       },
     })
     .then((response) => {
+      console.log("data", response);
       const data = response.data.data[0];
-      console.log("data", data);
       populateEditFormFields(data);
     })
     .catch((error) => {
@@ -93,7 +85,7 @@ export function getCategorieActuById(id) {
 
 export function populateEditFormFields(data) {
   console.log("populateEditFormFields", data);
-  const data_keys = ["id_categorieActu", "libelle_categorieActu", "image_categorieActu", "image_categorie1Actu"];
+  const data_keys = ["id_categorie_actualites", "libelle_categorie_actualites"];
   data_keys.forEach((element) => {
     const input = document.getElementById(element + "Field");
     if (input) {
@@ -104,20 +96,13 @@ export function populateEditFormFields(data) {
 
 export function collectEditFormData(e) {
   e.preventDefault();
-  const id = document.getElementById("id_categorieActuField").value;
-  const libelle = document.getElementById("libelle_categorieActuField").value;
-  const image_categorie = document.getElementById("image_categorieActuField")
+  const id = document.getElementById("id_categorie_actualitesField").value;
+  const libelle = document.getElementById("libelle_categorie_actualitesField").value;
+  const image_categorie = document.getElementById("image_categorie_actualitesField")
     .files[0];
-  const image_categorie1 = document.getElementById("image_categorie1ActuField")
-    .files[0];
-  const particulier = document.getElementById("particulierField").value;
-  const pro = document.getElementById("proField").value;
   const formData = new FormData();
   formData.append("id", id);
   formData.append("libelle", libelle);
-  formData.append("image_categorie", image_categorie);
-  formData.append("image_categorie1", image_categorie1);
-  formData.append("particulier", particulier);
-  formData.append("pro", pro);
+  formData.append("image", image_categorie);
   updateCategorieActu(formData);
 }
