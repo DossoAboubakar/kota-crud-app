@@ -1,25 +1,22 @@
 <?php 
 
-use Application\CrudRepository\CrudRequests;
+use Application\CrudRepository\CrudCommune;
 $primary_key='id_commune';
 $table_name ='laclef_commune';
-$operations = new CrudRequests();
-$records = $operations->getAllDefault($table_name , $primary_key);
+$operations = new CrudCommune();
+$records = $operations->getCommunes();
 $data_keys = [
     'id_commune',
+    'nom_ville',
     'libelle_commune',
-    'lat',
-    'long',
-    'id_ville'
 ];
 $page_title = 'Communes';
 $table_fields = [
     'Id',
-    'Libellé',
-    'Latitude',
-    'Longitude',
     'Ville',
+    'Commune',
 ];
 $display_addBtn = true;
 $displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteCommune';
+$editBtn_selector = 'btn-editCommune';

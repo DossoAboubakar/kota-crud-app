@@ -11,7 +11,7 @@ $id =$data_keys[0];
             <div class="modal-body">
                 <form id="editSituationForm">
                     <div class="row">
-                    <input type="" id="id_situation" name="id_situation"
+                    <input type="hidden" id="id_situation" name="id_situation"
                     value="<?= $row[$id] ?>" /> 
                         <?php for ($i = 1; $i < count($data_keys); $i++):
                             $labelle =$data_keys[$i];

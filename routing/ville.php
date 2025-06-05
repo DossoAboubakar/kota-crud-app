@@ -6,6 +6,7 @@ $operations = $operations ?? new CrudRequests(); // si pas déjà instancié
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'DELETE':
+        try {
         if (!isset($_GET['id']) || $_GET['id'] <= 0) {
             http_response_code(400);
             echo json_encode(['error' => 'ID invalide']);
@@ -14,19 +15,57 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $id = (int)$_GET['id'];
         $success = $operations->deleteItem('laclef_ville', 'id_ville', $id);
         echo json_encode(['success' => $success]);
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => $e->getMessage()]);
+    }
         break;
 
     case 'GET':
-        // ici tu peux ajouter un getAll ou getById
-        // ex: echo json_encode(['data' => $operations->getAll('laclef_ville')]);
+    try {
+       $id = $_GET['id'] ?? null;
+       if($id){
+        $success = $operations->getItemById('laclef_ville', 'id_ville', $id);
+        echo json_encode($success);
+       }
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => $e->getMessage()]);
+    }
         break;
 
     case 'POST':
-        // ici tu peux ajouter une insertion
+        try {
+        $ville = $_POST['ville'] ?? null;
+        $success = $operations->insertNewRow('laclef_ville', ['libelle_ville'], [$ville]);
+        echo json_encode(['success' => $success]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+        
         break;
 
     case 'PUT':
-        // ici tu peux ajouter un update
+        try {
+            $put_vars = file_get_contents("php://input");
+            parse_str($put_vars, $put_vars);
+            $id = $put_vars['id'] ?? null;
+            $ville = $put_vars['ville'] ?? null;
+            $operations->updateRow(
+                'laclef_ville', 
+                ['libelle_ville'], 
+                [$ville], 
+                'id_ville = ?', 
+                [$id]
+            );
+            
+        echo json_encode(['success' => true]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+        
         break;
 
     default:

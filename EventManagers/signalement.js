@@ -1,5 +1,4 @@
-
-  const INNER_HTML = `<div style="display:flex ;">
+const INNER_HTML = `<div style="display:flex ;">
   <div class="alert alert-success py-1 px-2 mb-0" style="font-size: 0.9rem;">
   ✅ Ajout effectué avec succès.
   </div>
@@ -10,103 +9,122 @@
   <i class="bi bi-arrow-repeat me-1"></i> Rafraîchir
   </button>
   </div>`;
-  
-  export function deleteSignalement(id) {
-    console.log("Tentative de suppression...");
-    if (confirm("Voulez-vous vraiment supprimer  #" + id + " des signalements?")) {
-      axios
-        .delete(`api/signalements/crudOps?id=${id}`)
-        .then(function (response) {
-          console.log(response);
-          const row = document.querySelector(`tr[data-id="${id}"]`);
-          if (row) {
-            row.remove();
-          }
-        })
-        .catch(function (error) {
-          console.error("Erreur lors de la suppression:", error);
-        });
-    }
-  }
-  
-  export function addSignalement() {
-    const indicatif = document.getElementById("indicatif").value;
-    const pays = document.getElementById("pays").value;
-    const flag = document.getElementById("flag").files[0];
-    const formData = new FormData();
-    formData.append("indicatif", indicatif);
-    formData.append("pays", pays);
-    formData.append("flag", flag);
+
+export function deleteSignalement(id) {
+  console.log("Tentative de suppression...");
+  if (
+    confirm("Voulez-vous vraiment supprimer  #" + id + " des signalements?")
+  ) {
     axios
-      .post("api/signalements/crudOps", formData)
-      .then(function (response) {
-        console.log("addSignalement:", response);
-        const alertArea = document.getElementById("alert-area");
-        alertArea.innerHTML = INNER_HTML;
-      })
-      .catch(function (error) {
-        console.error("Erreur lors de l'ajout:", error);
-      });
-  }
-  export function collectAddFormData(e) {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("indicatif", document.getElementById("indicatif").value);
-    formData.append("pays", document.getElementById("pays").value);
-    formData.append("flag", document.getElementById("flag").files[0]);
-    addSignalement(formData);
-  }
-  export function collectEditFormData(e) {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("id", document.getElementById("id_signalement").value);
-    formData.append("indicatif", document.getElementById("indicatifEdit").value);
-    formData.append("pays", document.getElementById("paysEdit").value);
-    formData.append("flag", document.getElementById("flagEdit").files[0]);
-    console.log("formData", document.getElementById("flagEdit").files[0]);
-    console.log("formData", document.getElementById("indicatifEdit").value);
-    console.log("formData", document.getElementById("paysEdit").value);
-    const fileInput = document.getElementById("flagEdit");
-  console.log("File input element:", fileInput); // Vérifiez si l'élément est trouvé
-  if (fileInput) {
-      console.log("Files:", fileInput.files); // Vérifiez la collection files
-      console.log("First file:", fileInput.files[0]); // Vérifiez le premier fichier
-  }
-    updateIndicateur(formData);
-  }
-  export function updateIndicateur(formData) {
-    formData.append("_method", "PUT");
-    axios
-      .post("api/listeIndicateurs/crudOps", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then(function (response) {
-        console.log("Mise à jour réussie:", response);
-        location.reload();
-      })
-      .catch(function (error) {
-        console.error("Erreur lors de la mise à jour:", error);
-      });
-  }
-  export function getIndicateurById(id) {
-    axios
-      .get(`api/listeIndicateurs/crudOps?id=${id}`)
+      .delete(`api/signalements/crudOps?id=${id}`)
       .then(function (response) {
         console.log(response);
-        const row = response.data.data[0];
-        populateEditFormFields(row);
+        const row = document.querySelector(`tr[data-id="${id}"]`);
+        if (row) {
+          row.remove();
+        }
       })
       .catch(function (error) {
-        console.error("Erreur lors de la récupération:", error);
+        console.error("Erreur lors de la suppression:", error);
       });
   }
-  
-  export function populateEditFormFields(data) {
-    console.log("populateEditFormFields", data);
-    document.getElementById("id_indic").value = data.id_indic;
-    document.getElementById("indicatifEdit").value = data.libelle;
-    document.getElementById("paysEdit").value = data.pays;
-  }
-  
+}
+
+export function addSignalement() {
+  const id_annonce = document.getElementById("id_annonce1").value;
+  const nom = document.getElementById("nom1").value;
+  const email = document.getElementById("email1").value;
+  const telephone = document.getElementById("telephone1").value;
+  const message = document.getElementById("message1").value;
+  const motif = document.getElementById("motif1").value;
+  const etat_contact = document.getElementById("etat_contact1").value;
+  const formData = new FormData();
+  formData.append("id_annonce", id_annonce);
+  formData.append("nom", nom);
+  formData.append("email", email);
+  formData.append("telephone", telephone);
+  formData.append("message", message);
+  formData.append("motif", motif);
+  formData.append("etat_contact", etat_contact);
+  axios
+    .post("api/signalements/crudOps", formData)
+    .then(function (response) {
+      console.log("addSignalement:", response);
+      const alertArea = document.getElementById("alert-area");
+      alertArea.innerHTML = INNER_HTML;
+    })
+    .catch(function (error) {
+      console.error("Erreur lors de l'ajout:", error);
+    });
+}
+export function collectAddFormData(e) {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append("id_annonce", document.getElementById("id_annonce2").value);
+  formData.append("nom", document.getElementById("nom2").value);
+  formData.append("email", document.getElementById("email2").value);
+  formData.append("telephone", document.getElementById("telephone2").value);
+  formData.append("message", document.getElementById("message2").value);
+  formData.append("motif", document.getElementById("motif2").value);
+  formData.append(
+    "etat_contact",
+    document.getElementById("etat_contact2").value
+  );
+  addSignalement(formData);
+}
+export function collectEditFormData(e) {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append("id", document.getElementById("id_signalement").value);
+  formData.append("id_annonce", document.getElementById("id_annonce2").value);
+  formData.append("nom", document.getElementById("nom2").value);
+  formData.append("email", document.getElementById("email2").value);
+  formData.append("telephone", document.getElementById("telephone2").value);
+  formData.append("message", document.getElementById("message2").value);
+  formData.append("motif", document.getElementById("motif2").value);
+  formData.append(
+    "etat_contact",
+    document.getElementById("etat_contact2").value
+  );
+  updateSignalement(formData);
+}
+export function updateSignalement(formData) {
+  formData.append("_method", "PUT");
+  axios
+    .post("api/signalements/crudOps", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    .then(function (response) {
+      console.log("Mise à jour réussie:", response);
+      location.reload();
+    })
+    .catch(function (error) {
+      console.error("Erreur lors de la mise à jour:", error);
+    });
+}
+export function getSignalementById(id) {
+  axios
+    .get(`api/signalements/crudOps?id=${id}`)
+    .then(function (response) {
+      console.log(response);
+      const row = response.data[0];
+      populateEditFormFields(row);
+    })
+    .catch(function (error) {
+      console.error("Erreur lors de la récupération:", error);
+    });
+}
+
+export function populateEditFormFields(data) {
+  console.log("populateEditFormFields", data);
+  document.getElementById("id_signalement").value = data.id_signalement;
+  document.getElementById("id_annonce2").value = data.id_annonce;
+  document.getElementById("nom2").value = data.nom;
+  document.getElementById("email2").value = data.email;
+  document.getElementById("telephone2").value = data.telephone;
+  document.getElementById("message2").value = data.message;
+  document.getElementById("motif2").value = data.motif;
+  document.getElementById("etat_contact2").value = data.etat_contact;
+}

@@ -1,5 +1,14 @@
-<?php $row = $records[0];
-$id =$data_keys[0];
+<?php 
+
+$data_keys = [
+    'prix',
+    'nom',
+    'email',
+    'telephone',
+    'message',
+    'motif',
+    'etat_contact',
+];
 ?>
 <div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -11,17 +20,28 @@ $id =$data_keys[0];
             <div class="modal-body">
                 <form id="addSignalementForm" enctype="multipart/form-data">
                     <div class="row">
-                        <?php for ($i = 1; $i < count($data_keys); $i++):
+                    <div class="col-6 mb-6">
+                            <label for="id_annonce1" class="form-label">
+                                Annonce
+                            </label>
+                            <select name="id_annonce1" id="id_annonce1" class="form-select select">
+                                <option value="">Selectionner une annonce</option>
+                                <?php foreach ($records as $record): ?>
+                                    <option value="<?= $record['id_annonce'] ?>"><?= $record['annonce'] . ' | ' . $record['prix'] . ' FCFA' ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <?php for ($i = 0; $i < count($data_keys); $i++):
                             $labelle =$data_keys[$i];
-                            $field = $table_fields[$i];
+                            $field = $data_keys[$i];
                             ?>
                         <div class="col-6 mb-6">
                             <label for="<?= $labelle ?>" class="form-label">
                                 <?= ucfirst($field) ?>
                             </label>
-                            <input type="<?php echo $field == 'CODE' ? 'number' : 'text'; ?>"  class="form-control" id="<?= $labelle ?>"
+                            <input type="<?php echo $field == 'id_signalement' ? 'hidden' : 'text'; ?>"  class="form-control" id="<?= $labelle ?>1"
                                 name="<?= $labelle ?>"
-                                placeholder="<?= strtolower($field) ?>" />
+                             placeholder="<?= strtolower($field) ?>" />
                         </div>
                         <?php endfor; ?>
                     </div>

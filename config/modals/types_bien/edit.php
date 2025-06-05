@@ -12,7 +12,7 @@
             <div class="modal-body">
                 <form id="editTypeBienDetailForm">
                     <div class="row">
-                    <input type="" id="id_typebien_detail" name="id_typebien_detail"
+                    <input type="hidden" id="id_typebien_detail" name="id_typebien_detail"
                     value="" /> 
                        
                         <div class="col-6 mb-6">

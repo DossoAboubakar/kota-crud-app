@@ -1,4 +1,3 @@
-
 /**
  * Import Event Listeners
  */
@@ -13,7 +12,6 @@ import { AlerteCmdtEventListeners } from "./EventsListeners/alerte-commandite.js
 import { AlerteLocaliteEventListeners } from "./EventsListeners/alerte-localite.js";
 import { AnnonceEventListeners } from "./EventsListeners/annonce.js";
 import { AnnonceCmdtEventListeners } from "./EventsListeners/annonce-cmdt.js";
-import { CommoditeEventListeners } from "./EventsListeners/commodite.js";
 import { CommuneEventListeners } from "./EventsListeners/commune.js";
 import { ContactEventListeners } from "./EventsListeners/contact.js";
 import { DemenagementEventListeners } from "./EventsListeners/demenagement.js";
@@ -35,6 +33,8 @@ import { TypeDeBienEventListeners } from "./EventsListeners/types_de_bien.js";
 import { VendeurEventListeners } from "./EventsListeners/vendeur.js";
 import { VilleEventListeners } from "./EventsListeners/ville.js";
 import { TransactionEventListeners } from "./EventsListeners/transaction.js";
+import { ClientEventListeners } from "./EventsListeners/client.js";
+import { CommoditeEventListeners } from "./EventsListeners/commodite.js";
 /**
  * Executing Listeners
  */
@@ -72,8 +72,7 @@ new TypeDeBienEventListeners();
 new TransactionEventListeners();
 new VendeurEventListeners();
 new VilleEventListeners();
-
-
+new ClientEventListeners();
 document.addEventListener("click", function (e) {
   if (e.target && e.target.id === "btn-refresh") {
     location.reload();
@@ -86,7 +85,6 @@ $(document).ready(function () {
     scrollX: 1065,
     scrollY: 500,
   });
-
 
   /* Initialize select2 for addModal */
   $("#addModal").on("shown.bs.modal", function () {
@@ -103,7 +101,6 @@ $(document).ready(function () {
     });
   });
   $(".flatpickr").flatpickr();
-  
 
   /* Menu initializer */
   $("#menu-abonnement").on("click", function () {
@@ -133,6 +130,9 @@ $(document).ready(function () {
 
   $("#menu-categories").on("click", function () {
     window.location.href = "/Categories";
+  });
+  $("#menu-clients").on("click", function () {
+    window.location.href = "/Clients";
   });
 
   $("#menu-categoriesActu").on("click", function () {
@@ -236,3 +236,24 @@ $(document).ready(function () {
     window.location.href = "/Vendeurs";
   });
 });
+// var map = L.map('map').setView([5.347, -4.027], 13); // Abidjan
+
+// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//   attribution: '© OpenStreetMap'
+// }).addTo(map);
+
+// var marker;
+
+// map.on('click', function(e) {
+//   const lat = e.latlng.lat.toFixed(6);
+//   const lon = e.latlng.lng.toFixed(6);
+
+//   document.getElementById('latitude').value = lat;
+//   document.getElementById('longitude').value = lon;
+
+//   if (marker) {
+//     marker.setLatLng(e.latlng);
+//   } else {
+//     marker = L.marker(e.latlng).addTo(map);
+//   }
+// });

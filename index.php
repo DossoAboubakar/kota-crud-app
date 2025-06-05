@@ -11,6 +11,12 @@ try {
         case 'dashboard':
             require('src/views/dashboard.php');
             break;
+        case 'Clients':
+            require('src/views/clients.php');
+            break;
+        case 'api/users/crudOps':
+            include('routing/client.php');
+            break;
 
         case 'Abonnements':
             //$controller->redirectToAbonnementListView();

@@ -1,15 +1,17 @@
 <?php 
 
-use Application\CrudRepository\CrudRequests;
+use Application\CrudRepository\CrudContact;
 $primary_key='id_contacts';
 $table_name ='laclef_contacts';
-$operations = new CrudRequests();
-$records = $operations->getAllDefault($table_name , $primary_key);
+$operations = new CrudContact();
+$records = $operations->getContacts();
 $data_keys = [
     'id_contacts',
-    'id_annonce',
-    'id_agence',
-    'id_user',
+    'annonce',
+    'prix',
+    'agence',
+    'immatriculation',
+    'adresse',
     'nom',
     'email',
     'telephone',
@@ -33,8 +35,10 @@ $page_title = 'Contacts';
 $table_fields = [
     'Id',
     'Annonce',
+    'Prix ',
     'Agence',
-    'User',
+    'Immatriculation',
+    'Adresse',
     'Nom',
     'Email',
     'Telephone',
@@ -56,3 +60,5 @@ $table_fields = [
 $display_addBtn = true;
 $displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteContact';
+$editBtn_selector = 'btn-editContact';
+

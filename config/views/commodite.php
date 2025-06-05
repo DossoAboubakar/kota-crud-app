@@ -1,31 +1,32 @@
 <?php 
 
-use Application\CrudRepository\CrudRequests;
+use Application\CrudRepository\CrudCommodite;
 $primary_key='id_commodites';
 $table_name ='laclef_commodites';
-$operations = new CrudRequests();
-$records = $operations->getAllDefault($table_name , $primary_key);
+$operations = new CrudCommodite();
+$records = $operations->getCommodites();
 $data_keys = [
     'id_commodites',
-    'id_type',
-    'libelle_type',
-    'libelle_commodites',
-    'image_commodites',
+    'type',
+    'titre',
+    'image',
     'activeimage',
     'ispro',
-    'code_commodite'
+    'code'
 ];
 $page_title = 'Commodités';
 $table_fields = [
     'Id',
     'Type',
-    'Libellé_Type',
-    'Libellé_Commodités',
+    'Titre',
     'Image',
     'Active Image',
     'Is Pro',
     'Code',
 ];
-$display_addBtn = false;
-$displayEditBtn = false;
+$display_addBtn = true;
+$displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteCommodite';
+$addBtn_selector = 'btn-addCommodite';
+$editBtn_selector = 'btn-editCommodite';
+

@@ -22,8 +22,6 @@ $data_keys = [
     'indicatif',
     'letelephone1',
     'lemail1',
-    'latitude',
-    'longitude',
     'etat_vendeur',
     'date_crea_vendeur',
     'horaires',
@@ -50,8 +48,6 @@ $table_fields = [
     'Indicatif',
     'Telephone',
     'Email',
-    'Latitude',
-    'Longitude',
     'Etat Vendeur',
     'Date Creation',
     'Horaires',
@@ -63,4 +59,5 @@ $table_fields = [
 $display_addBtn = true;
 $displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteVendeur';
+$editBtn_selector = 'btn-editVendeur';
 

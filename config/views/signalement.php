@@ -1,14 +1,14 @@
 <?php 
 
-use Application\CrudRepository\CrudRequests;
+use Application\CrudRepository\CrudSignalement;
 $primary_key='id_signalement';
 $table_name ='laclef_signalement';
-$operations = new CrudRequests();
-$records = $operations->getAllDefault($table_name , $primary_key);
+$operations = new CrudSignalement();
+$records = $operations->getSignalements();
 $data_keys = [
     'id_signalement',
-    'id_annonce',
-    'id_user',
+    'annonce',
+    'prix',
     'nom',
     'email',
     'telephone',
@@ -22,8 +22,8 @@ $data_keys = [
 $page_title = 'Signalement';
 $table_fields = [
     'Id Signalement',
-    'Id Annonce',
-    'Id User',
+    'Annonce',
+    'Prix',
     'Nom',
     'Email',
     'Telephone',
