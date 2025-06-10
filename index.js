@@ -235,25 +235,48 @@ $(document).ready(function () {
   $("#menu-vendeurs").on("click", function () {
     window.location.href = "/Vendeurs";
   });
+
+  var map = L.map("map").setView([5.347, -4.027], 13); // Abidjan
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "© OpenStreetMap",
+  }).addTo(map);
+
+  var marker;
+
+  map.on("click", function (e) {
+    const lat = e.latlng.lat.toFixed(6);
+    const lon = e.latlng.lng.toFixed(6);
+
+    document.getElementById("latitude1").value = lat;
+    document.getElementById("longitude1").value = lon;
+
+    if (marker) {
+      marker.setLatLng(e.latlng);
+    } else {
+      marker = L.marker(e.latlng).addTo(map);
+    }
+  });
+
+  var map1 = L.map("map1").setView([5.347, -4.027], 13); // Abidjan
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "© OpenStreetMap",
+  }).addTo(map1);
+
+  var marker1;
+
+  map1.on("click", function (e) {
+    const lat = e.latlng.lat.toFixed(6);
+    const lon = e.latlng.lng.toFixed(6);
+
+    document.getElementById("latitude2").value = lat;
+    document.getElementById("longitude2").value = lon;
+
+    if (marker1) {
+      marker1.setLatLng(e.latlng);
+    } else {
+      marker1 = L.marker(e.latlng).addTo(map1);
+    }
+  });
 });
-// var map = L.map('map').setView([5.347, -4.027], 13); // Abidjan
-
-// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//   attribution: '© OpenStreetMap'
-// }).addTo(map);
-
-// var marker;
-
-// map.on('click', function(e) {
-//   const lat = e.latlng.lat.toFixed(6);
-//   const lon = e.latlng.lng.toFixed(6);
-
-//   document.getElementById('latitude').value = lat;
-//   document.getElementById('longitude').value = lon;
-
-//   if (marker) {
-//     marker.setLatLng(e.latlng);
-//   } else {
-//     marker = L.marker(e.latlng).addTo(map);
-//   }
-// });

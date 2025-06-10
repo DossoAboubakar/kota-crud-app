@@ -1,5 +1,8 @@
-
-import { deleteAnnonce } from "../EventManagers/annonce.js";
+import {
+  deleteAnnonce,
+  collectEditFormData,
+  getAnnonceById,
+} from "../EventManagers/annonce.js";
 export class AnnonceEventListeners {
   constructor() {
     this.__invokListeners();
@@ -15,10 +18,25 @@ export class AnnonceEventListeners {
     });
   }
 
- 
+  clickOnEditBtns() {
+    const editButtons = document.querySelectorAll(".btn-editAnnonce");
+    editButtons?.forEach((button) => {
+      button.addEventListener("click", function () {
+        const id = this.dataset.id;
+        getAnnonceById(id);
+      });
+    });
+  }
+  clickOnSubmitUpdateForm() {
+    const editForm = document.querySelector("#editAnnonceForm");
+    editForm?.addEventListener("submit", function (e) {
+      collectEditFormData(e);
+    });
+  }
 
   __invokListeners() {
     this.clickOnDeleteBtns();
-    
+    this.clickOnEditBtns();
+    this.clickOnSubmitUpdateForm();
   }
 }

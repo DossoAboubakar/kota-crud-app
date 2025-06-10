@@ -160,7 +160,7 @@ try {
         case 'ListeLocalisation':
                 require('src/views/liste-localisation.php');
                 break;
-        case 'api/listeLocalisation/crudOps':
+        case 'api/listeLocalisations/crudOps':
                         include('routing/liste-localisation.php');
                         break;
         case 'MessagesContacts':

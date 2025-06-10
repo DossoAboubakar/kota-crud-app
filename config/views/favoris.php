@@ -25,7 +25,7 @@ $table_fields = [
     'Prix(FCFA)',
     'Date creation',
 ];
-$display_addBtn = true;
+$display_addBtn = false;
 $displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteFavoris';
 $editBtn_selector = 'btn-editFavoris';

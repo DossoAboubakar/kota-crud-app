@@ -21,15 +21,50 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'GET':
-        // ici tu peux ajouter un getAll ou getById
+        try {
+            $id = $_GET['id'] ?? null;
+            if($id){
+                $success = $operations->getItemById('laclef_annonce', 'id_annonce', $id);
+                echo json_encode($success);
+            }
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
         break;
 
     case 'POST':
-        // ici tu peux ajouter une insertion
+        try {
+            $post_vars = file_get_contents("php://input");
+            parse_str($post_vars, $post_vars);
+            $libelle_annonce = $post_vars['libelle_annonce'] ?? null;
+            $operations->insertNewRow('laclef_annonce', ['libelle_annonce'], [$libelle_annonce]);
+            echo json_encode(['success' => true]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
         break;
 
     case 'PUT':
-        // ici tu peux ajouter un update
+            try {
+                $put_vars = file_get_contents("php://input");
+                parse_str($put_vars, $put_vars);
+                $id = $put_vars['id'] ?? null;
+                $etat = $put_vars['etat'] ?? null;
+                $operations->updateRow(
+                    'laclef_annonce', 
+                    ['etat_annonce'], 
+                    [$etat], 
+                    'id_annonce = ?', 
+                    [$id]
+                );
+                
+            echo json_encode(['success' => true]);
+            } catch (Exception $e) {
+                http_response_code(500);
+                echo json_encode(['error' => $e->getMessage()]);
+            }
         break;
 
     default:

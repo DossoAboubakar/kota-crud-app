@@ -115,5 +115,7 @@ $table_fields = [
     'lienvideo'
 ];
 $display_addBtn = false;
-$displayEditBtn = false;
+$displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteAnnonce';
+$editBtn_selector = 'btn-editAnnonce';
+

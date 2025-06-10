@@ -27,7 +27,19 @@
                         <?php foreach ($records as $record): ?>
                         <tr data-id="<?=$record[$primary_key]?>">
                             <?php foreach ($data_keys as $key): ?>
+                                <?php if ($key === 'etat_annonce'): ?>
+                                <td>
+                                    <?php if ($record[$key] == 99): ?>
+                                        <span class="badge bg-label-danger">Bloqué</span>
+                                    <?php elseif ($record[$key] == 1): ?>
+                                        <span class="badge bg-label-success">Validée</span>
+                                    <?php elseif ($record[$key] == 0): ?>
+                                        <span class="badge bg-label-warning">En attente</span>
+                                    <?php endif; ?>
+                                </td>
+                                <?php else: ?>
                                 <td><?= isset($record[$key]) ? htmlspecialchars(mb_strimwidth($record[$key], 0, 50, '...')) : 'N/C' ?></td>
+                                <?php endif; ?>
                                 <?php endforeach; ?>
                             <td>
                                 <button class="btn btn-sm btn-outline-danger <?= $deleteBtn_selector ?>"
