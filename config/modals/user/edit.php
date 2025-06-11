@@ -292,7 +292,7 @@ $data_keys = [
                             <label for="<?= $input_id[$i] ?>" class="form-label">
                                 <?= $labelle ?>
                             </label>
-                            <input type="<?php echo $field == 'id_user' ? 'number' : 'text'; ?>"  class="form-control" id="<?= $input_id[$i] ?>2"
+                            <input type="<?php echo $field == 'email' ? 'email' : ($field == 'id_user'  || $field == 'etat' ? 'number' : 'text'); ?>"  class="form-control" id="<?= $input_id[$i] ?>2"
                                 name="<?= $input_id[$i] ?>"
                                 placeholder="<?= $field ?>" />
                         </div>

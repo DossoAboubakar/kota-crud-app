@@ -24,6 +24,7 @@ export function deleteSituation(id) {
       })
       .catch(function (error) {
         console.error("Erreur lors de la suppression:", error);
+        
       });
   }
 }

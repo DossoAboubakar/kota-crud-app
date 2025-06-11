@@ -81,6 +81,7 @@ export function addVendeur() {
     })
     .catch(function (error) {
       console.error("Erreur lors de l'ajout:", error);
+      alert("Veuillez remplir correctement tout les champs");
     });
 }
 export function collectAddFormData(e) {
@@ -157,6 +158,7 @@ export function updateVendeur(formData) {
     })
     .catch(function (error) {
       console.error("Erreur lors de la mise à jour:", error);
+      alert("Veuillez remplir correctement tout les champs");
     });
 }
 export function getVendeurById(id) {

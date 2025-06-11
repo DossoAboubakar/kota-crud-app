@@ -53,6 +53,7 @@ export function addCategorie() {
       document.getElementById("pro").value = "";
     })
     .catch(function (error) {
+      alert("Veuillez remplir tous les champs");
       console.error("Erreur lors de l'ajout:", error);
     });
 }

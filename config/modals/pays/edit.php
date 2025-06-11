@@ -21,10 +21,17 @@ $id =$data_keys[0];
                             <label for="<?= $labelle ?>" class="form-label">
                                 <?= ucfirst($field) ?>
                             </label>
+                            <?php if ($field == 'Code'): ?>
+                            <input type="number" class="form-control" id="<?= $labelle.'Edit' ?>"
+                                name="<?= $labelle ?>"
+                                value="<?= $row[$labelle] ?>"
+                                placeholder="Entrez <?= strtolower($field) ?>" />
+                            <?php else: ?>
                             <input type="text" class="form-control" id="<?= $labelle.'Edit' ?>"
                                 name="<?= $labelle ?>"
                                 value="<?= $row[$labelle] ?>"
                                 placeholder="Entrez <?= strtolower($field) ?>" />
+                            <?php endif; ?>
                         </div>
                         <?php endfor; ?>
                     </div>

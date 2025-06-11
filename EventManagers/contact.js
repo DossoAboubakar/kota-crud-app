@@ -97,6 +97,7 @@ export function addContact() {
     })
     .catch(function (error) {
       console.error("Erreur lors de l'ajout:", error);
+      alert("Veuillez remplir tout les champs");
     });
 }
 
@@ -118,6 +119,7 @@ export function updateContact(formData) {
     })
     .catch(function (error) {
       console.error("Erreur lors de la mise à jour:", error);
+      alert("Veuillez remplir tout les champs");
     });
 }
 

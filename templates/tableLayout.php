@@ -30,7 +30,7 @@
                                 <?php if ($key === 'etat_annonce'): ?>
                                 <td>
                                     <?php if ($record[$key] == 99): ?>
-                                        <span class="badge bg-label-danger">Bloqué</span>
+                                        <span class="badge bg-label-danger">Bloquée</span>
                                     <?php elseif ($record[$key] == 1): ?>
                                         <span class="badge bg-label-success">Validée</span>
                                     <?php elseif ($record[$key] == 0): ?>

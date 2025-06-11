@@ -19,7 +19,8 @@ $id =$data_keys[0];
                             <label for="<?= $labelle ?>" class="form-label">
                                 <?= ucfirst($field) ?>
                             </label>
-                            <input type="<?php echo $field == 'CODE' ? 'number' : 'text'; ?>"  class="form-control" id="<?= $labelle ?>"
+
+                            <input type="<?php echo $field == 'Code' ? 'number' : 'text'; ?>"  class="form-control" id="<?= $labelle ?>"
                                 name="<?= $labelle ?>"
                                 placeholder="<?= strtolower($field) ?>" />
                         </div>

@@ -39,9 +39,10 @@ $data_keys = [
                             <label for="<?= $labelle ?>" class="form-label">
                                 <?= ucfirst($field) ?>
                             </label>
-                            <input type="<?php echo $field == 'id_signalement' ? 'hidden' : 'text'; ?>"  class="form-control" id="<?= $labelle ?>1"
+                            <input type="<?php echo $field == 'etat_contact' ? 'number' : 'text'; ?>"  class="form-control" id="<?= $labelle ?>1"
                                 name="<?= $labelle ?>"
                              placeholder="<?= strtolower($field) ?>" />
+                        
                         </div>
                         <?php endfor; ?>
                     </div>

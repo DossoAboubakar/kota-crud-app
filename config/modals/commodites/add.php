@@ -47,9 +47,15 @@ $input_id = [
                             <label for="<?= $input_id[$i] ?>" class="form-label">
                                 <?= $labelle ?>
                             </label>
+                            <?php if ($field == 'ispro'): ?>
+                            <input type="number"  class="form-control" id="<?= $input_id[$i] ?>1"
+                                name="<?= $input_id[$i] ?>"
+                                placeholder="<?= $labelle ?>" />
+                            <?php else: ?>
                             <input type="<?php echo $field == 'id_user' ? 'number' : 'text'; ?>"  class="form-control" id="<?= $input_id[$i] ?>1"
                                 name="<?= $input_id[$i] ?>"
                                 placeholder="<?= $labelle ?>" />
+                            <?php endif; ?>
                         </div>
                         <?php endfor; ?>
                     </div>

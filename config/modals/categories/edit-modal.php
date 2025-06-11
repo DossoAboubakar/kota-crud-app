@@ -23,7 +23,7 @@ $id =$data_keys[0];
                             <label for="<?= $labelle ?>Field" class="form-label">
                                 <?= ucfirst($field) ?>
                             </label>
-                            <input type="<?php echo $field == 'Image' || $field == 'Image 1' ? 'file' : 'text' ?>" class="form-control" id="<?= $labelle ?>Field"
+                            <input type="<?php echo $field == 'Particulier' || $field == 'Pro' ? 'number' : ($field == 'Image' || $field == 'Image 1' ? 'file' : 'text') ?>" class="form-control" id="<?= $labelle ?>Field"
                                 name="<?= $labelle ?>"
                                 value="<?= $row[$labelle] ?>"
                                 placeholder="Entrez <?= strtolower($field) ?>" />

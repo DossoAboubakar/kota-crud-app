@@ -45,6 +45,7 @@ export function addIndicateur() {
     })
     .catch(function (error) {
       console.error("Erreur lors de l'ajout:", error);
+      alert("Veuillez remplir tout les champs")
     });
 }
 export function collectAddFormData(e) {

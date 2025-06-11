@@ -78,9 +78,15 @@ $table_fields = [
                             <label for="<?= $labelle ?>1" class="form-label">
                                 <?= ucfirst($field) ?>`
                             </label>
+                            <?php if ($field == 'Etat contact'): ?>
+                            <input type="number" class="form-control" id="<?= $labelle ?>1"
+                                name="<?= $labelle ?>"
+                                placeholder="<?= strtolower($field) ?>" />
+                            <?php else: ?>
                             <input type="text" class="form-control" id="<?= $labelle ?>1"
                                 name="<?= $labelle ?>"
                                 placeholder="<?= strtolower($field) ?>" />
+                            <?php endif; ?>
                         </div>
                         <?php endfor; ?>
                     </div>

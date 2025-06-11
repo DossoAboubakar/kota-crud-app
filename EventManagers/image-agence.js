@@ -11,97 +11,97 @@ const INNER_HTML = `<div style="display:flex ;">
                     </div>`;
 
 export function deleteImageAgence(id) {
-    console.log("Tentative de suppression...");
-    if (confirm("Voulez-vous vraiment supprimer  #" + id + " des dossiers?")) {
-      axios
-        .delete(`api/image-agence/crudOps?id=${id}`)
-        .then(function (response) {
-          console.log(response)
-          const row = document.querySelector(`tr[data-id="${id}"]`);
-          if (row) {
-            row.remove();
-          }
-        
-        })
-        .catch(function (error) {
-          console.error("Erreur lors de la suppression:", error);
-        });
-    }
-  }
- export function addImageAgence() {
-   const id_user = document.getElementById("id_user").value;
-   const id_annonce = document.getElementById("id_annonce").value;
-   const image = document.getElementById("image").files[0];
-   const formData = new FormData();
-   formData.append("id_client", id_user);
-   formData.append("id_annonce", id_annonce);
-   formData.append("image", image);
-   axios
-     .post("api/imagesAgences/crudOps", formData)
-     .then(function (response) {
-       console.log("addImageAgence:", response);
-       const alertArea = document.getElementById("alert-area");
-       alertArea.innerHTML = INNER_HTML;
-     })
-     .catch(function (error) {
-       console.error("Erreur lors de l'ajout:", error);
-     });
- }
-  export function collectAddFormData(e) {
-    
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("id_client", document.getElementById("id_user").value);
-    formData.append("id_annonce", document.getElementById("id_annonce").value);
-    formData.append("image", document.getElementById("image").files[0]);
-    addImageAgence(formData);
-  }
-  export function collectEditFormData(e) {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("id", document.getElementById("id_image_annonce").value);
-    formData.append("id_client", document.getElementById("id_user").value);
-    formData.append("id_annonce", document.getElementById("id_annonce").value);
-    formData.append("image", document.getElementById("imageAgence").files[0]);
-    console.log('formData', document.getElementById("imageAgence").files[0])
-    updateImageAgence(formData);
-  }
-  export function updateImageAgence(formData) {
-    formData.append("_method", "PUT");
+  console.log("Tentative de suppression...");
+  if (confirm("Voulez-vous vraiment supprimer  #" + id + " des dossiers?")) {
     axios
-      .post("api/imagesAgences/crudOps", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then(function (response) {
-        console.log("Mise à jour réussie:", response);
-        location.reload();
-      })
-      .catch(function (error) {
-        console.error("Erreur lors de la mise à jour:", error);
-      });
-  }
-  export function getImageAgenceById(id) {
-    axios
-      .get(`api/imagesAgences/crudOps?id=${id}`)
+      .delete(`api/image-agence/crudOps?id=${id}`)
       .then(function (response) {
         console.log(response);
-        const row = response.data.data[0];
-        populateEditFormFields(row);
+        const row = document.querySelector(`tr[data-id="${id}"]`);
+        if (row) {
+          row.remove();
+        }
       })
       .catch(function (error) {
-        console.error("Erreur lors de la récupération:", error);
+        console.error("Erreur lors de la suppression:", error);
       });
   }
-
-  export function populateEditFormFields(data) {
-    console.log("populateEditFormFields", data);
-    const data_keys = ["id_image_annonce", "id_user", "id_annonce"];
-    data_keys.forEach((element) => {
-      const input = document.getElementById(element);
-      if (input) {
-        input.value = data[element];
-      }
+}
+export function addImageAgence() {
+  const id_user = document.getElementById("id_user").value;
+  const id_annonce = document.getElementById("id_annonce").value;
+  const image = document.getElementById("image").files[0];
+  const formData = new FormData();
+  formData.append("id_client", id_user);
+  formData.append("id_annonce", id_annonce);
+  formData.append("image", image);
+  axios
+    .post("api/imagesAgences/crudOps", formData)
+    .then(function (response) {
+      console.log("addImageAgence:", response);
+      const alertArea = document.getElementById("alert-area");
+      alertArea.innerHTML = INNER_HTML;
+    })
+    .catch(function (error) {
+      console.error("Erreur lors de l'ajout:", error);
+      alert("Veuillew remplir tout les champs");
     });
-  }
+}
+export function collectAddFormData(e) {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append("id_client", document.getElementById("id_user").value);
+  formData.append("id_annonce", document.getElementById("id_annonce").value);
+  formData.append("image", document.getElementById("image").files[0]);
+  addImageAgence(formData);
+}
+export function collectEditFormData(e) {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append("id", document.getElementById("id_image_annonce").value);
+  formData.append("id_client", document.getElementById("id_user").value);
+  formData.append("id_annonce", document.getElementById("id_annonce").value);
+  formData.append("image", document.getElementById("imageAgence").files[0]);
+  console.log("formData", document.getElementById("imageAgence").files[0]);
+  updateImageAgence(formData);
+}
+export function updateImageAgence(formData) {
+  formData.append("_method", "PUT");
+  axios
+    .post("api/imagesAgences/crudOps", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    .then(function (response) {
+      console.log("Mise à jour réussie:", response);
+      location.reload();
+    })
+    .catch(function (error) {
+      console.error("Erreur lors de la mise à jour:", error);
+      alert("Veuillew remplir tout les champs");
+    });
+}
+export function getImageAgenceById(id) {
+  axios
+    .get(`api/imagesAgences/crudOps?id=${id}`)
+    .then(function (response) {
+      console.log(response);
+      const row = response.data.data[0];
+      populateEditFormFields(row);
+    })
+    .catch(function (error) {
+      console.error("Erreur lors de la récupération:", error);
+    });
+}
+
+export function populateEditFormFields(data) {
+  console.log("populateEditFormFields", data);
+  const data_keys = ["id_image_annonce", "id_user", "id_annonce"];
+  data_keys.forEach((element) => {
+    const input = document.getElementById(element);
+    if (input) {
+      input.value = data[element];
+    }
+  });
+}

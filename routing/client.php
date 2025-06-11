@@ -47,7 +47,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
         $etat = $_POST['etat'] ?? null;
         $adresseUser = $_POST['adresseUser'] ?? null;
-        $paysUser = $_POST['paysUser'] ?? null;
+        $paysUser = $_POST['pays'] ?? null;
         $date_crea = date('Y-m-d H:i:s');
         $success = $operations->insertNewRow('laclef_client', ['nom_client', 'prenom_client', 'indicatif', 'tel_client', 'email_client', 'token', 'mdp_client', 'date_creation_client', 'etat_client', 'communeUser', 'adresseUser', 'paysUser'], [$nom, $prenom, $indicatif, $telephone, $email, $token, $mdp, $date_crea, $etat, $ville, $adresseUser, $paysUser]);
         echo json_encode(['success' => $success]);

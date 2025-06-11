@@ -55,7 +55,7 @@ $data_keys = [
             <div class="modal-body">
                 <form id="editVendeurForm" enctype="multipart/form-data">
                     <div class="row">
-                    <input type="" id="id_vendeur" name="id_vendeur"
+                    <input type="hidden" id="id_vendeur" name="id_vendeur"
                     value="" /> 
                         <div class="col-6 mb-6">
                             <label for="image" class="form-label">

@@ -49,6 +49,11 @@ export function addPays() {
     })
     .catch(function (error) {
       console.error("Erreur lors de l'ajout:", error);
+      alert(`
+        1) veuillez remplir tout les champs ou 
+        2) Verifier que Alpha2 a exactement 2 caracteres et Alpha3 a exactement 3 caracteres
+        3) Vereifier que Alpha2 et Alpha3 sont uniques
+      `);
     });
 }
 export function collectAddFormData(e) {

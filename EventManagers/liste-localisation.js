@@ -61,6 +61,9 @@ export function addListeLocalisation() {
     })
     .catch(function (error) {
       console.error("Erreur lors de l'ajout:", error);
+      alert(
+        "veuillez remplir tout les champs ou Verifier la coherence des données"
+      );
     });
 }
 export function collectAddFormData(e) {
@@ -129,6 +132,9 @@ export function getListeLocalisationById(id) {
     })
     .catch(function (error) {
       console.error("Erreur lors de la récupération:", error);
+      alert(
+        "veuillez remplir tout les champs ou Verifier la coherence des données"
+      );
     });
 }
 

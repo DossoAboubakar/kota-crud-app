@@ -45,6 +45,7 @@ export function addTypeBienDetail() {
     })
     .catch(function (error) {
       console.error("Erreur lors de l'ajout:", error);
+      alert("Veuillez remplir correctement tout les champs");
     });
 }
 
@@ -65,17 +66,18 @@ export function collectEditFormData(e) {
 export function updateTypeBienDetail(formData) {
   formData.append("_method", "PUT");
   axios
-  .post("api/typesBienDetails/crudOps", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  })
+    .post("api/typesBienDetails/crudOps", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
     .then(function (response) {
       console.log("Mise à jour réussie:", response);
       location.reload();
     })
     .catch(function (error) {
       console.error("Erreur lors de la mise à jour:", error);
+      alert("Veuillez remplir correctement tout les champs");
     });
 }
 export function getTypeBienDetailById(id) {
@@ -94,5 +96,6 @@ export function getTypeBienDetailById(id) {
 export function populateEditFormFields(data) {
   console.log("populateEditFormFields", data);
   document.getElementById("id_typebien_detail").value = data.id_typebien_detail;
-  document.getElementById("libelle_typebien_detailEdit").value = data.libelle_typebien_detail;
+  document.getElementById("libelle_typebien_detailEdit").value =
+    data.libelle_typebien_detail;
 }
