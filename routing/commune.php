@@ -13,7 +13,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             exit;
         }
         $id = (int)$_GET['id'];
-        $success = $operations->deleteItem('laclef_commune', 'id_commune', $id);
+        $success = $operations->deleteItem('myclean_commune', 'id_commune', $id);
         echo json_encode(['success' => $success]);
     } catch (Exception $e) {
         http_response_code(500);
@@ -25,7 +25,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     try {
        $id = $_GET['id'] ?? null;
        if($id){
-        $success = $operations->getItemById('laclef_commune', 'id_commune', $id);
+        $success = $operations->getItemById('myclean_commune', 'id_commune', $id);
         echo json_encode($success);
        }
     } catch (Exception $e) {
@@ -38,7 +38,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
         try {
         $libelle_commune = $_POST['libelle_commune'] ?? null;
         $id_ville = $_POST['id_ville'] ?? null; 
-        $success = $operations->insertNewRow('laclef_commune', ['libelle_commune', 'id_ville'], [$libelle_commune, $id_ville]);
+        $longitude = $_POST['longitude'] ?? '123';
+        $latitude = $_POST['latitude'] ?? '123';
+        $success = $operations->insertNewRow('myclean_commune', ['libelle_commune', 'id_ville', 'long', 'lat'], [$libelle_commune, $id_ville, $longitude, $latitude]);
         echo json_encode(['success' => $success]);
         } catch (Exception $e) {
             http_response_code(500);
@@ -54,10 +56,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $id = $put_vars['id_commune'] ?? null;
             $libelle_commune = $put_vars['libelle_commune'] ?? null;
             $id_ville = $put_vars['id_ville'] ?? null; 
+            $longitude = $put_vars['longitude'] ?? '123';
+            $latitude = $put_vars['latitude'] ?? '123';
             $operations->updateRow(
-                'laclef_commune', 
-                ['libelle_commune', 'id_ville'], 
-                [$libelle_commune, $id_ville], 
+                'myclean_commune', 
+                ['libelle_commune', 'id_ville', 'long', 'lat'], 
+                [$libelle_commune, $id_ville, $longitude, $latitude], 
                 'id_commune = ?', 
                 [$id]
             );

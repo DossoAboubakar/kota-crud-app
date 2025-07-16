@@ -2,7 +2,7 @@
 
 use Application\CrudRepository\CrudRequests;
 $primary_key='id_vendeur';
-$table_name ='laclef_vendeur';
+$table_name ='myclean_vendeur';
 $operations = new CrudRequests();
 $records = $operations->getAllDefault($table_name , $primary_key);
 $data_keys = [

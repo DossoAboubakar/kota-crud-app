@@ -12,8 +12,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 exit;
             }
             $id = (int)$_GET['id'];
-            $success = $operations->deleteItem('laclef_favoris', 'id_favoris', $id);
-            http_response_code(response_code: 200);
+            $success = $operations->deleteItem('myclean_favoris', 'id_favoris', $id);
+            http_response_code(200);
             $response = [
                 'success' => true,
                 'message' => 'suppression avec succes',
@@ -45,11 +45,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         c.tel_client AS tel_client,
                         f.date_ajout As date_ajouter
                     FROM 
-                        laclef_favoris f
+                        myclean_favoris f
                     JOIN 
-                        laclef_client c ON f.id_user = c.id_client
+                        myclean_client c ON f.id_user = c.id_client
                     JOIN 
-                        laclef_annonce a ON f.id_annonce = a.id_annonce
+                        myclean_annonce a ON f.id_annonce = a.id_annonce
                     WHERE 
                         f.id_favoris = ?
                     ORDER BY 
@@ -58,7 +58,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $statement = $operations->connection->prepare($sql);
             $statement->execute([$id]);
             $success = $statement->fetchAll(\PDO::FETCH_ASSOC);
-            http_response_code(response_code: 200);
+            http_response_code(200);
             $response = [
                 'success' => true,
                 'message' => 'données récupérées avec succes',
@@ -76,8 +76,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $id_client = $_POST['id_client'];
                 $id_annonce = $_POST['id_annonce'];
                 $date_ajout = $_POST['date_ajout'];
-                $operations->insertNewRow('laclef_favoris', ['id_user', 'id_annonce', 'date_ajout'], [$id_client, $id_annonce, $date_ajout]);
-                http_response_code(response_code: 200);
+                $operations->insertNewRow('myclean_favoris', ['id_user', 'id_annonce', 'date_ajout'], [$id_client, $id_annonce, $date_ajout]);
+                http_response_code(200);
                 $response = [
                         'success' => true,
                         'message' => 'données inserées avec succes',
@@ -98,7 +98,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     $id = $put_vars['id_favoris'] ?? null;
                     $id_client = $put_vars['id_client'] ?? null;
                     $id_annonce = $put_vars['id_annonce'] ?? null;
-                    $date_ajout = $put_vars['date_ajout'] ?? null;
                     if (!$id || !$id_client || !$id_annonce) {
                         http_response_code(400);
                         echo json_encode([
@@ -109,9 +108,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     }
                     
                     $operations->updateRow(
-                        'laclef_favoris', 
-                        ['id_user', 'id_annonce', 'date_ajout'], 
-                        [$id_client, $id_annonce, $date_ajout], 
+                        'myclean_favoris', 
+                        ['id_user', 'id_annonce'], 
+                        [$id_client, $id_annonce], 
                         'id_favoris = ?', 
                         [$id]
                     );

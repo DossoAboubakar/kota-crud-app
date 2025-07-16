@@ -38,17 +38,6 @@ export function deleteUser(id) {
 }
 
 export function addUser() {
-  //   $input_id = [
-  //     "nom_user",
-  //     "prenom_user",
-  //     "tel_user",
-  //     "email_user",
-  //     "token",
-  //     "mdp_user",
-  //     "etat_user",
-  //     "communeUser",
-  //     "adresseUser",
-  //   ];
   const nom = document.getElementById("nom_user1").value;
   const prenom = document.getElementById("prenom_user1").value;
   const tel = document.getElementById("tel_user1").value;
@@ -91,11 +80,11 @@ export function addUser() {
     })
     .catch(function (error) {
       console.error("Erreur lors de l'ajout:", error);
+      alert("Veuillez remplir  correctement les champs");
     });
 }
 
 export function updateUser(formData) {
-  // formData.append("_method", "PUT");
   const params = new URLSearchParams();
   formData.forEach((value, key) => {
     params.append(key, value);

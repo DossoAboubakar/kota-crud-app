@@ -13,8 +13,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 exit;
             }
         $id = (int)$_GET['id'];
-        $success = $operations->deleteItem('laclef_annonce', 'id_annonce', $id);
-        http_response_code(response_code: 200);
+        $success = $operations->deleteItem('myclean_annonce', 'id_annonce', $id);
+        http_response_code(200);
         } catch (\Throwable $th) {
             throw new Exception($th->getMessage(),500);
         }
@@ -24,7 +24,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         try {
             $id = $_GET['id'] ?? null;
             if($id){
-                $success = $operations->getItemById('laclef_annonce', 'id_annonce', $id);
+                $success = $operations->getItemById('myclean_annonce', 'id_annonce', $id);
                 echo json_encode($success);
             }
         } catch (Exception $e) {
@@ -38,7 +38,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $post_vars = file_get_contents("php://input");
             parse_str($post_vars, $post_vars);
             $libelle_annonce = $post_vars['libelle_annonce'] ?? null;
-            $operations->insertNewRow('laclef_annonce', ['libelle_annonce'], [$libelle_annonce]);
+            $operations->insertNewRow('myclean_annonce', ['libelle_annonce'], [$libelle_annonce]);
             echo json_encode(['success' => true]);
         } catch (Exception $e) {
             http_response_code(500);
@@ -53,7 +53,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $id = $put_vars['id'] ?? null;
                 $etat = $put_vars['etat'] ?? null;
                 $operations->updateRow(
-                    'laclef_annonce', 
+                    'myclean_annonce', 
                     ['etat_annonce'], 
                     [$etat], 
                     'id_annonce = ?', 

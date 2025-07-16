@@ -1,4 +1,8 @@
-
+<?php $sql = "SELECT * FROM myclean_client";
+$statement = $operations->connection->prepare($sql);
+$statement->execute();
+$clients = $statement->fetchAll(\PDO::FETCH_ASSOC); 
+?>
 <?php
 $row = $records[0];
 ?>
@@ -17,8 +21,8 @@ $row = $records[0];
                                 CLIENT
                             </label>
                             <select class=" w-100 select" name="client_of_favoris" id="client_of_favoris">
-                                <?php foreach ($records as $record): ?>
-                                <option value="<?= $record['id_client'] ?>"><?= $record['nom_client'] ?> | <?= $record['prenom_client'] ?> </option>
+                                <?php foreach ($clients as $client): ?>
+                                <option value="<?= $client['id_client'] ?>"><?= $client['nom_client'] ?> | <?= $client['prenom_client'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>       

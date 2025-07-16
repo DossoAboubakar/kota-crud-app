@@ -14,7 +14,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
         $id = (int)$_GET['id'];
         $success = $operations->deleteItem('laclef_annonce_commodites', 'id_annonce_commodites', $id);
-        http_response_code(response_code: 200);
+        http_response_code(200);
         } catch (\Throwable $th) {
             throw new Exception($th->getMessage(),500);
         }

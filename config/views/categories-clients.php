@@ -2,7 +2,7 @@
 
 use Application\CrudRepository\CrudRequests;
 $primary_key='id_categorie_client';
-$table_name ='laclef_categorie_client';
+$table_name ='myclean_categorie_client';
 $operations = new CrudRequests();
 $records = $operations->getAllDefault($table_name , $primary_key);
 $data_keys = [
@@ -16,6 +16,9 @@ $table_fields = [
     'Id',
     'Libellé',
 ];
-$display_addBtn = false;
-$displayEditBtn = false;
+$display_addBtn = true;
+$displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteCategorieClient';
+$deleteBtn_name = 'deleteCategorieClient';
+$editBtn_selector = 'btn-editCategorieClient';
+$editBtn_name = 'editCategorieClient';

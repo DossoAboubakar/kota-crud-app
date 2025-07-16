@@ -1,4 +1,4 @@
-import { addAnnee } from "../EventManagers/annee.js";
+import { addAnnee, updateAnnee } from "../EventManagers/annee.js";
 import { getAnneeById } from "../EventManagers/annee.js";
 import { collectEditFormData } from "../EventManagers/annee.js";
 import { deleteAnnee } from "../EventManagers/annee.js";
@@ -27,7 +27,7 @@ export class AnneeEventListeners {
   clickOnSubmitUpdateForm() {
     const editForm = document.querySelector("#editForm");
     editForm?.addEventListener("submit", function (e) {
-      collectEditFormData(e);
+      updateAnnee(e);
     });
   }
 
@@ -40,8 +40,6 @@ export class AnneeEventListeners {
       });
     });
   }
-
- 
 
   __invokListeners() {
     this.clickOnSubmitAddForm();

@@ -11,7 +11,8 @@ export class ImageAgenceEventListeners {
   clickOnDeleteBtns() {
     const deleteButtons = document.querySelectorAll(".btn-deleteImageAgence");
     deleteButtons?.forEach((button) => {
-      button.addEventListener("click", function () {
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
         const id = this.dataset.id;
         console.log("id", id);
         deleteImageAgence(id);

@@ -28,9 +28,7 @@ export function deleteAnnee(id) {
 }
 
 export function addAnnee() {
-  const libelle = document.getElementById("libelle_annee").value;
-  const formData = new FormData();
-  formData.append("libelle", libelle);
+  const formData = collectAddFormData();
   axios
     .post("api/annees/crudOps", formData)
     .then(function (response) {
@@ -45,12 +43,9 @@ export function addAnnee() {
     });
 }
 
-export function updateAnnee(formData) {
-  const params = new URLSearchParams();
-  formData.forEach((value, key) => {
-    params.append(key, value);
-  });
-
+export function updateAnnee(e) {
+  e.preventDefault();
+  const params = collectEditFormData();
   axios
     .put("api/annees/crudOps", params, {
       headers: {
@@ -75,13 +70,12 @@ export function getAnneeById(id) {
     })
     .then((response) => {
       const data = response.data.data[0];
-      populateEditFormFields(data)
+      populateEditFormFields(data);
     })
     .catch((error) => {
       console.error("Erreur lors de la récupération des données:", error);
     });
 }
-
 
 export function populateEditFormFields(data) {
   console.log(data);
@@ -91,16 +85,30 @@ export function populateEditFormFields(data) {
     if (input) {
       input.value = data[element];
     }
-  });}
-  
+  });
+}
 
-
-export function collectEditFormData(e) {
-  e.preventDefault();
+export function collectEditFormData() {
   const id = document.getElementById("id_anneeField").value;
   const libelle = document.getElementById("libelle_anneeField").value;
   const formData = new FormData();
   formData.append("id", id);
   formData.append("libelle", libelle);
-  updateAnnee(formData);
+  const params = convertDataToURLsearchParams(formData);
+  return params;
+}
+
+export function convertDataToURLsearchParams(formData) {
+  const params = new URLSearchParams();
+  formData.forEach((value, key) => {
+    params.append(key, value);
+  });
+  return params;
+}
+
+export function collectAddFormData() {
+  const formData = new FormData();
+  const libelle = document.getElementById("libelle_annee").value;
+  formData.append("libelle", libelle);
+  return formData;
 }

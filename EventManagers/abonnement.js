@@ -6,21 +6,11 @@ export function deleteAbonnement(id) {
       .delete(`api/abonnements/crudOps/?id=${id}`)
       .then(function (response) {
         console.log(response)
-        // Supprimer la ligne du tableau qui contient l'élément avec cet ID
         const row = document.querySelector(`tr[data-id="${id}"]`);
         if (row) {
           row.remove();
         }
-        // Afficher un toast/alerte
-        // const alertContainer = document.getElementById("alert-container");
-        // alertContainer.innerHTML = `
-        //   <div class="alert alert-success alert-dismissible fade show" role="alert">
-        //     Abonnement supprimé avec succès !
-        //     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        //   </div>
-        // `;
 
-        // Fermer l'alerte automatiquement après 3 secondes
         setTimeout(() => {
           const alert = document.querySelector(".alert");
           if (alert) {

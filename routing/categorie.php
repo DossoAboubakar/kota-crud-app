@@ -12,8 +12,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 exit;
             }
             $id = (int)$_GET['id'];
-            $success = $operations->deleteItem('laclef_categorie', 'id_categorie', $id);
-            http_response_code(response_code: 200);
+            $success = $operations->deleteItem('myclean_categorie', 'id_categorie', $id);
+            http_response_code(200);
             $response = [
                 'success' => true,
                 'message' => 'suppression avec succes',
@@ -34,8 +34,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 exit;
             }
             $id = (int)$_GET['id'];
-            $success = $operations->getItemById('laclef_categorie', 'id_categorie', $id);
-            http_response_code(response_code: 200);
+            $success = $operations->getItemById('myclean_categorie', 'id_categorie', $id);
+            http_response_code(200);
             $response = [
                 'success' => true,
                 'message' => 'données récupérées avec succes',
@@ -60,6 +60,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     $uploadDir = 'uploads/';
                     $imagePath = null;
                     $image1Path = null;
+                    $description_categorie = "description";
                 
                     if ($image_categorie && $image_categorie['error'] === UPLOAD_ERR_OK) {
                         $imagePath = $uploadDir . uniqid() . '_' . basename($image_categorie['name']);
@@ -72,9 +73,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     }
                 
                     $operations->updateRow(
-                        'laclef_categorie', 
-                        ['libelle_categorie', 'image_categorie', 'image_categorie1', 'particulier', 'pro'], 
-                        [$libelle, $imagePath, $image1Path, $particulier, $pro], 
+                        'myclean_categorie', 
+                        ['libelle_categorie', 'image_categorie', 'image_categorie1', 'particulier', 'pro', 'description_categorie'], 
+                        [$libelle, $imagePath, $image1Path, $particulier, $pro, $description_categorie], 
                         'id_categorie = ?', 
                         [$id]
                     );
@@ -96,6 +97,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             
                     $image = $_FILES['image'];
                     $image1 = $_FILES['image1'];
+                    $description_categorie = "description"; 
             
                     $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
             
@@ -122,9 +124,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     move_uploaded_file($image1['tmp_name'], $image1Path);
             
                     $operations->insertNewRow(
-                        'laclef_categorie',
-                        ['libelle_categorie', 'image_categorie', 'image_categorie1', 'particulier', 'pro'],
-                        [$libelle, $imagePath, $image1Path, $particulier, $pro]
+                        'myclean_categorie',
+                        ['libelle_categorie', 'image_categorie', 'image_categorie1', 'particulier', 'pro', 'description_categorie'],
+                        [$libelle, $imagePath, $image1Path, $particulier, $pro, $description_categorie]
                     );
                     http_response_code(200);
                     $response = [

@@ -72,6 +72,7 @@ export function updateCategorie(formData) {
     })
     .catch(function (error) {
       console.error("Erreur lors de la mise à jour:", error);
+      alert("Veuillez remplir tout les champs");
     });
 }
 

@@ -13,22 +13,18 @@ $data_keys = [
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
-            <!-- Modal Header -->
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitle">Modifier un élément</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <!-- Modal Body -->
             <div class="modal-body">
                 <form id="editListeLocalisationForm" enctype="multipart/form-data">
 
-                    <!-- Champ caché pour l'id -->
                     <input type="hidden" name="id" id="id" value="">
 
                     <div class="row">
 
-                        <!-- Sélection Ville -->
                         <div class="col-6 mb-6">
                             <label for="id_ville2" class="form-label">Ville</label>
                             <select class="w-100 select" name="indicatif" id="id_ville2">
@@ -40,7 +36,6 @@ $data_keys = [
                             </select>
                         </div>
 
-                        <!-- Sélection Commune -->
                         <div class="col-6 mb-6">
                             <label for="id_commune2" class="form-label">Commune</label>
                             <select class="w-100 select" name="pays" id="id_commune2">
@@ -52,7 +47,6 @@ $data_keys = [
                             </select>
                         </div>
 
-                        <!-- Champs dynamiques -->
                         <?php foreach ($data_keys as $key): ?>
                             <div class="col-6 mb-6">
                                 <label for="<?= $key ?>2" class="form-label">
@@ -68,32 +62,27 @@ $data_keys = [
                             </div>
                         <?php endforeach; ?>
 
-                        <!-- Latitude -->
                         <div class="col-6 mb-6">
                             <label for="latitude2" class="form-label">Latitude :</label>
                             <input type="text" id="latitude2" name="latitude2" readonly class="form-control" />
                         </div>
-
-                        <!-- Longitude -->
                         <div class="col-6 mb-6">
                             <label for="longitude2" class="form-label">Longitude :</label>
                             <input type="text" id="longitude2" name="longitude2" readonly class="form-control" />
                         </div>
 
-                    </div> <!-- /.row -->
+                    </div>
 
-                    <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Annuler</button>
                         <button type="submit" class="btn btn-primary" id="editBtn">Modifier</button>
                     </div>
 
-                    <!-- Carte -->
                     <div id="map1" style="height: 300px; margin-top: 15px;"></div>
 
                 </form>
-            </div> <!-- /.modal-body -->
+            </div>
 
-        </div> <!-- /.modal-content -->
-    </div> <!-- /.modal-dialog -->
-</div> <!-- /#editModal -->
+        </div>
+    </div>
+</div>

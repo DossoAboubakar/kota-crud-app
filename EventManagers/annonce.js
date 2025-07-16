@@ -16,12 +16,9 @@ export function deleteAnnonce(id) {
   }
 }
 
-export function updateAnnonce(formData) {
-  const params = new URLSearchParams();
-  formData.forEach((value, key) => {
-    params.append(key, value);
-  });
-
+export function updateAnnonce(e) {
+  e.preventDefault();
+  const params = collectEditFormData();
   axios
     .put("api/annonces/crudOps", params, {
       headers: {
@@ -37,15 +34,16 @@ export function updateAnnonce(formData) {
     });
 }
 
-export function collectEditFormData(e) {
-  e.preventDefault();
+export function collectEditFormData() {
   const id = document.getElementById("id_annonce").value;
   const etat = document.getElementById("etat_annonce").value;
   const formData = new FormData();
   formData.append("id", id);
   formData.append("etat", etat);
-  updateAnnonce(formData);
+  const params = convertDataToURLsearchParams(formData);
+  return params;
 }
+
 export function getAnnonceById(id) {
   axios
     .get(`api/annonces/crudOps`, {
@@ -61,6 +59,14 @@ export function getAnnonceById(id) {
     .catch((error) => {
       console.error("Erreur lors de la récupération des données:", error);
     });
+}
+
+export function convertDataToURLsearchParams(formData) {
+  const params = new URLSearchParams();
+  formData.forEach((value, key) => {
+    params.append(key, value);
+  });
+  return params;
 }
 
 export function populateEditFormFields(data) {

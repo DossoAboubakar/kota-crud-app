@@ -2,7 +2,7 @@
 
 use Application\CrudRepository\CrudFavoris;
 $primary_key='id_favoris';
-$table_name ='laclef_favoris';
+$table_name ='myclean_favoris';
 $operations = new CrudFavoris();
 $records = $operations->getFavoris();
 $data_keys = [
@@ -25,7 +25,8 @@ $table_fields = [
     'Prix(FCFA)',
     'Date creation',
 ];
-$display_addBtn = false;
+$display_addBtn = true;
 $displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteFavoris';
 $editBtn_selector = 'btn-editFavoris';
+$deleteBtn_name = 'Supprimer';

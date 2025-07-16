@@ -12,8 +12,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
             exit;
         }
         $id = (int)$_GET['id'];
-        $success = $operations->deleteItem('laclef_pays', 'id', $id);
-        http_response_code(response_code: 200);
+        $success = $operations->deleteItem('myclean_pays', 'id', $id);
+        http_response_code(200);
         break;
 
 
@@ -24,8 +24,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $alpha3 = $_POST['alpha3'];
                 $nom_en_gb = $_POST['nom_en_gb'];
                 $nom_fr_fr = $_POST['nom_fr_fr'];
-                $operations->insertNewRow('laclef_pays', ['code', 'alpha2', 'alpha3', 'nom_en_gb', 'nom_fr_fr'], [$code, $alpha2, $alpha3, $nom_en_gb, $nom_fr_fr]);
-                http_response_code(response_code: 200);
+                $operations->insertNewRow('myclean_pays', ['code', 'alpha2', 'alpha3', 'nom_en_gb', 'nom_fr_fr'], [$code, $alpha2, $alpha3, $nom_en_gb, $nom_fr_fr]);
+                http_response_code(200);
                 $response = [
                         'success' => true,
                         'message' => 'données inserées avec succes',
@@ -46,8 +46,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         exit;
                     }
                     $id = (int)$_GET['id'];
-                    $success = $operations->getItemById('laclef_pays', 'id', $id);
-                    http_response_code(response_code: 200);
+                    $success = $operations->getItemById('myclean_pays', 'id', $id);
+                    http_response_code(200);
                     $response = [
                         'success' => true,
                         'message' => 'données récupérées avec succes',
@@ -91,7 +91,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     
                     // Mise à jour dans la base de données
                     $operations->updateRow(
-                        'laclef_pays', 
+                        'myclean_pays', 
                         ['code', 'alpha2', 'alpha3', 'nom_en_gb', 'nom_fr_fr'], 
                         [$code, $alpha2, $alpha3, $nom_en_gb, $nom_fr_fr], 
                         'id_pays = ?', 

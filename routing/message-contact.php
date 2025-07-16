@@ -12,8 +12,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
             exit;
         }
         $id = (int)$_GET['id'];
-        $success = $operations->deleteItem('laclef_msg_contacts', 'id_contacts', $id);
-        http_response_code(response_code: 200);
+        $success = $operations->deleteItem('myclean_msg_contacts', 'id_contacts', $id);
+        http_response_code(200);
         break;
 
     default:

@@ -45,7 +45,7 @@ export function addIndicateur() {
     })
     .catch(function (error) {
       console.error("Erreur lors de l'ajout:", error);
-      alert("Veuillez remplir tout les champs")
+      alert("Veuillez remplir tout les champs");
     });
 }
 export function collectAddFormData(e) {
@@ -60,18 +60,16 @@ export function collectEditFormData(e) {
   e.preventDefault();
   const formData = new FormData();
   formData.append("id", document.getElementById("id_indic").value);
-  formData.append("indicatif", document.getElementById("indicatifEdit").value);
-  formData.append("pays", document.getElementById("paysEdit").value);
-  formData.append("flag", document.getElementById("flagEdit").files[0]);
-  console.log("formData", document.getElementById("flagEdit").files[0]);
-  console.log("formData", document.getElementById("indicatifEdit").value);
-  console.log("formData", document.getElementById("paysEdit").value);
+  formData.append("indicatif", document.getElementById("indicatif2").value);
+  formData.append("pays", document.getElementById("pays2").value);
+  formData.append("flag", document.getElementById("flag2").files[0]);
+
   const fileInput = document.getElementById("flagEdit");
-console.log("File input element:", fileInput); // Vérifiez si l'élément est trouvé
-if (fileInput) {
-    console.log("Files:", fileInput.files); // Vérifiez la collection files
-    console.log("First file:", fileInput.files[0]); // Vérifiez le premier fichier
-}
+  console.log("File input element:", fileInput); 
+  if (fileInput) {
+    console.log("Files:", fileInput.files); 
+    console.log("First file:", fileInput.files[0]); 
+  }
   updateIndicateur(formData);
 }
 export function updateIndicateur(formData) {
@@ -88,6 +86,7 @@ export function updateIndicateur(formData) {
     })
     .catch(function (error) {
       console.error("Erreur lors de la mise à jour:", error);
+      alert("Veuillez remplir tout les champs")
     });
 }
 export function getIndicateurById(id) {
@@ -106,6 +105,6 @@ export function getIndicateurById(id) {
 export function populateEditFormFields(data) {
   console.log("populateEditFormFields", data);
   document.getElementById("id_indic").value = data.id_indic;
-  document.getElementById("indicatifEdit").value = data.libelle;
-  document.getElementById("paysEdit").value = data.pays;
+  document.getElementById("indicatif2").value = data.libelle;
+  document.getElementById("pays2").value = data.pays;
 }

@@ -2,7 +2,7 @@
 
 use Application\CrudRepository\CrudRequests;
 $primary_key='id_categorie';
-$table_name ='laclef_categorie';
+$table_name ='myclean_categorie';
 $operations = new CrudRequests();
 $records = $operations->getAllDefault($table_name , $primary_key);
 $data_keys = [

@@ -1,0 +1,22 @@
+{
+    "name": "myclean/app",
+    "description": "MyClean Application",
+    "type": "project",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "src"
+        },
+        "classmap": [
+            "src/Application/CrudRepository/",
+            "src/Application/Lib/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\": "Tests/"
+        }
+    }
+}

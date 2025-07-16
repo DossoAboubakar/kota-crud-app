@@ -2,7 +2,7 @@
 
 use Application\CrudRepository\CrudRequests;
 $primary_key='id_indic';
-$table_name ='laclef_liste_indicateur';
+$table_name ='myclean_liste_indicateur';
 $operations = new CrudRequests();
 $records = $operations->getAllDefault($table_name , $primary_key);
 $data_keys = [

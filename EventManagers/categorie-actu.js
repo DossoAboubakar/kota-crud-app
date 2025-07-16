@@ -11,7 +11,9 @@ const INNER_HTML = `<div style="display:flex ;">
                     </div>`;
 
 export function deleteCategorieActu(id) {
-  if (confirm("Voulez-vous vraiment supprimer  #" + id + " des catégories actus?")) {
+  if (
+    confirm("Voulez-vous vraiment supprimer  #" + id + " des catégories actus?")
+  ) {
     axios
       .delete(`api/categoriesActu/crudOps?id=${id}`)
       .then(function (response) {
@@ -99,9 +101,12 @@ export function populateEditFormFields(data) {
 export function collectEditFormData(e) {
   e.preventDefault();
   const id = document.getElementById("id_categorie_actualitesField").value;
-  const libelle = document.getElementById("libelle_categorie_actualitesField").value;
-  const image_categorie = document.getElementById("image_categorie_actualitesField")
-    .files[0];
+  const libelle = document.getElementById(
+    "libelle_categorie_actualitesField"
+  ).value;
+  const image_categorie = document.getElementById(
+    "image_categorie_actualitesField"
+  ).files[0];
   const formData = new FormData();
   formData.append("id", id);
   formData.append("libelle", libelle);

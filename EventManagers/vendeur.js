@@ -125,12 +125,21 @@ export function collectEditFormData(e) {
   formData.append("id_vendeur", document.getElementById("id_vendeur").value);
   formData.append("adresse", document.getElementById("adresse2").value);
   formData.append("id_pro", document.getElementById("id_pro2").value);
-  formData.append("type_vendeur", document.getElementById("type_vendeur2").value);
+  formData.append(
+    "type_vendeur",
+    document.getElementById("type_vendeur2").value
+  );
   formData.append("mdp_vendeur", document.getElementById("mdp_vendeur2").value);
-  formData.append("description_vendeur", document.getElementById("description_vendeur2").value);
+  formData.append(
+    "description_vendeur",
+    document.getElementById("description_vendeur2").value
+  );
   formData.append("nomsociete", document.getElementById("nomsociete2").value);
   formData.append("statut", document.getElementById("statut2").value);
-  formData.append("immatriculation", document.getElementById("immatriculation2").value);
+  formData.append(
+    "immatriculation",
+    document.getElementById("immatriculation2").value
+  );
   formData.append("legerant", document.getElementById("legerant2").value);
   formData.append("lenom", document.getElementById("lenom2").value);
   formData.append("leprenom", document.getElementById("leprenom2").value);

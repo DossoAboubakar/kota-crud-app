@@ -12,8 +12,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 exit;
             }
             $id = (int)$_GET['id'];
-            $success = $operations->deleteItem('laclef_vendeur', 'id_vendeur', $id);
-            http_response_code(response_code: 200);
+            $success = $operations->deleteItem('myclean_vendeur', 'id_vendeur', $id);
+            http_response_code(200);
             $response = [
                 'success' => true,
                 'message' => 'suppression avec succes',
@@ -34,15 +34,15 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 exit;
             }
             $id = (int)$_GET['id'];
-            $success = $operations->getItemById('laclef_vendeur', 'id_vendeur', $id);
-            http_response_code(response_code: 200);
+            $success = $operations->getItemById('myclean_vendeur', 'id_vendeur', $id);
+            http_response_code(200);
             echo json_encode($success);
             break;
         } catch (\Throwable $e) {
             throw new Exception($e->getMessage(),500);
         }
 
-        case 'POST':
+    case 'POST':
             if (isset($_POST['_method']) && $_POST['_method'] === 'PUT') {
      
                     $id = $_POST['id_vendeur'];
@@ -76,7 +76,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     }
                 
                     $operations->updateRow(
-                        'laclef_vendeur', 
+                        'myclean_vendeur', 
                         ['id_pro', 'type_vendeur', 'mdp_vendeur',  'description_vendeur', 'nomsociete1', 'statut1', 'immatriculation1', 'adresse1', 'legerant1', 'lenom1', 'leprenom1', 'indicatif', 'letelephone1', 'lemail1', 'etat_vendeur', 'date_crea_vendeur', 'horaires', 'equipes', 'uid1', 'nb_unite', 'image'],
                         [$id_pro, $type_vendeur, $mdp_vendeur, $description_vendeur, $nomsociete, $statut, $immatriculation, $adresse, $legerant, $lenom, $leprenom, $indicatif, $telephone, $email, $etat, $date_creation, $horaires, $equipes, $uid, $nb_unite, $imagePath], 
                         'id_vendeur = ?', 
@@ -142,7 +142,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
                     
                     $operations->insertNewRow(
-                        'laclef_vendeur',
+                        'myclean_vendeur',
                         ['id_pro', 'type_vendeur', 'mdp_vendeur', 'description_vendeur', 'nomsociete1', 'statut1', 'immatriculation1', 'adresse1', 'legerant1', 'lenom1', 'leprenom1', 'indicatif', 'letelephone1', 'lemail1', 'etat_vendeur', 'date_crea_vendeur', 'horaires', 'equipes', 'uid1', 'nb_unite', 'image'],
                         [$id_pro, $type_vendeur, $mdp_vendeur, $description_vendeur, $nomsociete, $statut, $immatriculation, $adresse, $legerant, $lenom, $leprenom, $indicatif, $telephone, $email, $etat, $date_creation, $horaires, $equipes, $uid, $nb_unite, $imagePath]
                     );

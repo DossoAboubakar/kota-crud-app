@@ -2,7 +2,11 @@
 <?php
 $row = $records[0];
 ?>                
-
+<?php $sql = "SELECT * FROM myclean_client";
+$statement = $operations->connection->prepare($sql);
+$statement->execute();
+$clients = $statement->fetchAll(\PDO::FETCH_ASSOC); 
+?>
 <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -21,8 +25,8 @@ $row = $records[0];
                                 CLIENT
                             </label>
                             <select class="w-100 select" name="client_of_favoris" id="id_client">
-                                <?php foreach ($records as $record): ?>
-                                <option value="<?= $record['id_client'] ?>"><?= $record['nom_client'] ?> | <?= $record['prenom_client'] ?> </option>
+                                <?php foreach ($clients as $client): ?>
+                                <option value="<?= $client['id_client'] ?>"><?= $client['nom_client'] ?> | <?= $client['prenom_client'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>       

@@ -1,6 +1,4 @@
-<?php $row = $records[0];
-$id =$data_keys[0];
-?>
+
 <div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -11,17 +9,16 @@ $id =$data_keys[0];
             <div class="modal-body">
                 <form id="addForm" enctype="multipart/form-data">
                     <div class="row">
-                        <?php for ($i = 1; $i < count($data_keys); $i++):
-                            $labelle =$data_keys[$i];
-                            $field = $table_fields[$i];
+                        <?php for ($i = 1; $i < count($table_fields); $i++):
+                            $labelle =$table_fields[$i];
                             ?>
                         <div class="col-6 mb-6">
                             <label for="<?= $labelle ?>" class="form-label">
-                                <?= ucfirst($field) ?>
+                                <?= ucfirst($labelle) ?>
                             </label>
-                            <input type="text" class="form-control" id="<?= $labelle ?>"
+                            <input type="text" class="form-control" id="<?= $labelle ?>1"
                                 name="<?= $labelle ?>"
-                                placeholder="<?= strtolower($field) ?>" />
+                                placeholder="<?= strtolower($labelle) ?>" />
                         </div>
                         <?php endfor; ?>
                     </div>

@@ -1,7 +1,7 @@
 <?php 
 use Application\CrudRepository\CrudRequests;
 $primary_key='id_recherche';
-$table_name ='laclef_recherche';
+$table_name ='myclean_recherche';
 $operations = new CrudRequests();
 $records = $operations->getAllDefault($table_name , $primary_key);
 $data_keys = [

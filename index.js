@@ -10,14 +10,13 @@ import { ActualiteEventListeners } from "./EventsListeners/actualite.js";
 import { AlerteEventListeners } from "./EventsListeners/alerte.js";
 import { AlerteCmdtEventListeners } from "./EventsListeners/alerte-commandite.js";
 import { AlerteLocaliteEventListeners } from "./EventsListeners/alerte-localite.js";
-import { AnnonceEventListeners } from "./EventsListeners/annonce.js";
 import { AnnonceCmdtEventListeners } from "./EventsListeners/annonce-cmdt.js";
 import { CommuneEventListeners } from "./EventsListeners/commune.js";
-import { ContactEventListeners } from "./EventsListeners/contact.js";
+// import { ContactEventListeners } from "./EventsListeners/contact.js";
 import { DemenagementEventListeners } from "./EventsListeners/demenagement.js";
 import { DossierEventListeners } from "./EventsListeners/dossier.js";
 import { EquipeEventListeners } from "./EventsListeners/equipe.js";
-import { EquipementEventListeners } from "./EventsListeners/equipement.js";
+// import { EquipementEventListeners } from "./EventsListeners/equipement.js";
 import { EstimationCmdtEventListeners } from "./EventsListeners/estimation-cmdt.js";
 import { ImageAgenceEventListeners } from "./EventsListeners/image-agence.js";
 import { IndicateurEventListeners } from "./EventsListeners/liste-indicateur.js";
@@ -35,6 +34,7 @@ import { VilleEventListeners } from "./EventsListeners/ville.js";
 import { TransactionEventListeners } from "./EventsListeners/transaction.js";
 import { ClientEventListeners } from "./EventsListeners/client.js";
 import { CommoditeEventListeners } from "./EventsListeners/commodite.js";
+import { CategorieClientsEventListeners } from "./EventsListeners/categorie-clients.js";
 /**
  * Executing Listeners
  */
@@ -48,15 +48,14 @@ new ActualiteEventListeners();
 new AlerteEventListeners();
 new AlerteCmdtEventListeners();
 new AlerteLocaliteEventListeners();
-new AnnonceEventListeners();
 new AnnonceCmdtEventListeners();
 new CommoditeEventListeners();
 new CommuneEventListeners();
-new ContactEventListeners();
+// new ContactEventListeners();
 new DemenagementEventListeners();
 new DossierEventListeners();
 new EquipeEventListeners();
-new EquipementEventListeners();
+// new EquipementEventListeners();
 new EstimationCmdtEventListeners();
 new ImageAgenceEventListeners();
 new IndicateurEventListeners();
@@ -73,6 +72,7 @@ new TransactionEventListeners();
 new VendeurEventListeners();
 new VilleEventListeners();
 new ClientEventListeners();
+new CategorieClientsEventListeners();
 document.addEventListener("click", function (e) {
   if (e.target && e.target.id === "btn-refresh") {
     location.reload();
@@ -82,7 +82,7 @@ document.addEventListener("click", function (e) {
 $(document).ready(function () {
   $("#data-table").DataTable({
     responsive: true,
-    scrollX: 1065,
+    scrollX: 1000,
     scrollY: 500,
   });
 
@@ -118,8 +118,8 @@ $(document).ready(function () {
   $("#menu-alertesLocalites").on("click", function () {
     window.location.href = "/AlertesLocalites";
   });
-  $("#menu-années").on("click", function () {
-    window.location.href = "/Annees";
+  $("#menu-admin").on("click", function () {
+    window.location.href = "/Admin";
   });
   $("#menu-annonces").on("click", function () {
     window.location.href = "/Annonces";
@@ -236,29 +236,7 @@ $(document).ready(function () {
     window.location.href = "/Vendeurs";
   });
 
-  var map = L.map("map").setView([5.347, -4.027], 13); // Abidjan
-
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "© OpenStreetMap",
-  }).addTo(map);
-
-  var marker;
-
-  map.on("click", function (e) {
-    const lat = e.latlng.lat.toFixed(6);
-    const lon = e.latlng.lng.toFixed(6);
-
-    document.getElementById("latitude1").value = lat;
-    document.getElementById("longitude1").value = lon;
-
-    if (marker) {
-      marker.setLatLng(e.latlng);
-    } else {
-      marker = L.marker(e.latlng).addTo(map);
-    }
-  });
-
-  var map1 = L.map("map1").setView([5.347, -4.027], 13); // Abidjan
+  var map1 = L.map("map1")?.setView([5.347, -4.027], 13); // Abidjan
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "© OpenStreetMap",

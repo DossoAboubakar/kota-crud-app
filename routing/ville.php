@@ -13,7 +13,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             exit;
         }
         $id = (int)$_GET['id'];
-        $success = $operations->deleteItem('laclef_ville', 'id_ville', $id);
+        $success = $operations->deleteItem('myclean_ville', 'id_ville', $id);
         echo json_encode(['success' => $success]);
     } catch (Exception $e) {
         http_response_code(500);
@@ -25,7 +25,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     try {
        $id = $_GET['id'] ?? null;
        if($id){
-        $success = $operations->getItemById('laclef_ville', 'id_ville', $id);
+        $success = $operations->getItemById('myclean_ville', 'id_ville', $id);
         echo json_encode($success);
        }
     } catch (Exception $e) {
@@ -37,7 +37,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
         try {
         $ville = $_POST['ville'] ?? null;
-        $success = $operations->insertNewRow('laclef_ville', ['libelle_ville'], [$ville]);
+        $success = $operations->insertNewRow('myclean_ville', ['libelle_ville'], [$ville]);
         echo json_encode(['success' => $success]);
         } catch (Exception $e) {
             http_response_code(500);
@@ -53,7 +53,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $id = $put_vars['id'] ?? null;
             $ville = $put_vars['ville'] ?? null;
             $operations->updateRow(
-                'laclef_ville', 
+                'myclean_ville', 
                 ['libelle_ville'], 
                 [$ville], 
                 'id_ville = ?', 

@@ -1,4 +1,13 @@
-
+<?php $sql = "SELECT * FROM myclean_client";
+$statement = $operations->connection->prepare($sql);
+$statement->execute();
+$clients = $statement->fetchAll(\PDO::FETCH_ASSOC); 
+?>
+<?php $sql = "SELECT * FROM myclean_annonce";
+$statement = $operations->connection->prepare($sql);
+$statement->execute();
+$annonces = $statement->fetchAll(\PDO::FETCH_ASSOC); 
+?>
 <?php
 $row = $records[0];
 ?>
@@ -17,8 +26,8 @@ $row = $records[0];
                                 CLIENT
                             </label>
                             <select class="w-100 select" name="client" id="id_client">
-                                <?php foreach ($records as $record): ?>
-                                <option value="<?= $record['id_client'] ?>"><?= $record['nom_client'] ?> | <?= $record['prenom_client'] ?> </option>
+                                <?php foreach ($clients as $client): ?>
+                                <option value="<?= $client['id_client'] ?>"><?= $client['nom_client'] ?> | <?= $client['prenom_client'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>  
@@ -27,8 +36,8 @@ $row = $records[0];
                                 ANNONCE 
                             </label>
                             <select class="w-100 select" name="annonce" id="id_annonce">
-                                <?php foreach ($records as $record): ?>
-                                <option value="<?= $record['id_annonce'] ?>"><?= $record['libelle_annonce'] ?> | <?= $record['prix_annonce'].''.'FCFA' ?> </option>
+                                <?php foreach ($annonces as $annonce): ?>
+                                <option value="<?= $annonce['id_annonce'] ?>"><?= $annonce['libelle_annonce'] ?> | <?= $annonce['prix_annonce'].''.'FCFA' ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>   

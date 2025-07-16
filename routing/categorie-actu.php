@@ -14,7 +14,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
         $id = (int)$_GET['id'];
         $success = $operations->deleteItem('laclef_categorie_actualites', 'id_categorie_actualites', $id);
-        http_response_code(response_code: 200);
+        http_response_code(200);
         } catch (\Throwable $th) {
             throw new Exception($th->getMessage(),500);
         }
@@ -29,7 +29,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
             $id = (int)$_GET['id'];
             $success = $operations->getItemById('laclef_categorie_actualites', 'id_categorie_actualites', $id);
-            http_response_code(response_code: 200);
+            http_response_code(200);
             $response = [
                 'success' => true,
                 'message' => 'données récupérées avec succes',

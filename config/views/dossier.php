@@ -5,6 +5,7 @@ $primary_key='id_dossier';
 $table_name ='laclef_dossier';
 $operations = new CrudRequests();
 $records = $operations->getAllDefault($table_name , $primary_key);
+$page_title = 'Dossiers';
 $data_keys = [
     'id_dossier',
     'token',
@@ -30,7 +31,6 @@ $data_keys = [
     'date_crea_dossier'
 ];
 
-$page_title = 'Dossiers';
 $table_fields = [
     'Id',
     'Token',

@@ -14,7 +14,7 @@ export function deleteImageAgence(id) {
   console.log("Tentative de suppression...");
   if (confirm("Voulez-vous vraiment supprimer  #" + id + " des dossiers?")) {
     axios
-      .delete(`api/image-agence/crudOps?id=${id}`)
+      .delete(`api/imagesAgences/crudOps?id=${id}`)
       .then(function (response) {
         console.log(response);
         const row = document.querySelector(`tr[data-id="${id}"]`);
@@ -60,7 +60,7 @@ export function collectEditFormData(e) {
   const formData = new FormData();
   formData.append("id", document.getElementById("id_image_annonce").value);
   formData.append("id_client", document.getElementById("id_user").value);
-  formData.append("id_annonce", document.getElementById("id_annonce").value);
+  formData.append("id_annonce", document.getElementById("id_annonce2").value);
   formData.append("image", document.getElementById("imageAgence").files[0]);
   console.log("formData", document.getElementById("imageAgence").files[0]);
   updateImageAgence(formData);
@@ -97,7 +97,7 @@ export function getImageAgenceById(id) {
 
 export function populateEditFormFields(data) {
   console.log("populateEditFormFields", data);
-  const data_keys = ["id_image_annonce", "id_user", "id_annonce"];
+  const data_keys = ["id_image_annonce", "id_user", "id_annonce2"];
   data_keys.forEach((element) => {
     const input = document.getElementById(element);
     if (input) {

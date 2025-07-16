@@ -1,4 +1,8 @@
-
+<?php $sql = "SELECT * FROM myclean_ville";
+$statement = $operations->connection->prepare($sql);
+$statement->execute();
+$villes = $statement->fetchAll(\PDO::FETCH_ASSOC); 
+?>
 <div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -21,8 +25,8 @@
                                 Ville 
                             </label>
                             <select class="w-100 select form-control" name="annonce" id="id_ville1">
-                                <?php foreach ($records as $record): ?>
-                                <option value="<?= $record['id_ville'] ?>"><?= $record['nom_ville'] ?> </option>
+                                <?php foreach ($villes as $ville): ?>
+                                <option value="<?= $ville['id_ville'] ?>"><?= $ville['libelle_ville'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div> 

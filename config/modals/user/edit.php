@@ -1,6 +1,4 @@
 <?php
-
-
 $pays = ["Afghanistan",
 "Afrique du Sud",
 "Albanie",
@@ -248,9 +246,6 @@ $data_keys = [
     'adresse',
     
 ];
-
-
-
 ?>
 <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">

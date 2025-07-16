@@ -2,7 +2,7 @@
 
 use Application\CrudRepository\CrudRequests;
 $primary_key='id_equipement';
-$table_name ='laclef_equipement';
+$table_name ='myclean_equipement';
 $operations = new CrudRequests();
 $records = $operations->getAllDefault($table_name , $primary_key);
 $data_keys = [
@@ -15,6 +15,7 @@ $table_fields = [
     'Id',
     'Libelle',
 ];
-$display_addBtn = false;
-$displayEditBtn = false;
+$display_addBtn = true;
+$displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteEquipement';
+$deleteBtn_name = 'Supprimer';

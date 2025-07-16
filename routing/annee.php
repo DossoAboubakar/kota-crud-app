@@ -13,7 +13,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
             $id = (int)$_GET['id'];
             $success = $operations->deleteItem('laclef_annee', 'id_annee', $id);
-            http_response_code(response_code: 200);
+            http_response_code(200);
             $response = [
                 'success' => true,
                 'message' => 'suppression avec succes',
@@ -35,7 +35,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
             $id = (int)$_GET['id'];
             $success = $operations->getItemById('laclef_annee', 'id_annee', $id);
-            http_response_code(response_code: 200);
+            http_response_code( 200);
             $response = [
                 'success' => true,
                 'message' => 'données récupérées avec succes',
@@ -52,7 +52,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             try {
                 $libelle = $_POST['libelle'];
                 $operations->insertNewRow('laclef_annee', ['libelle_annee'], [$libelle]);
-                http_response_code(response_code: 200);
+                http_response_code(200);
                 $response = [
                         'success' => true,
                         'message' => 'données inserées avec succes',

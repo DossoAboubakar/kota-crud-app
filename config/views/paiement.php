@@ -2,7 +2,7 @@
 
 use Application\CrudRepository\CrudRequests;
 $primary_key='id_paiement';
-$table_name ='laclef_paiement';
+$table_name ='myclean_paiement';
 $operations = new CrudRequests();
 $records = $operations->getAllDefault($table_name , $primary_key);
 $data_keys = [
@@ -24,6 +24,7 @@ $data_keys = [
     'etat',
     'date_crea'
 ];
+
 $page_title = 'Paiements';
 $table_fields = [
     'Id',

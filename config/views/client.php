@@ -1,8 +1,9 @@
-<?php 
+<?php
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Application\CrudRepository\CrudRequests;
 $primary_key='id_client';
-$table_name ='laclef_client';
+$table_name ='myclean_client';
 $operations = new CrudRequests();
 $records = $operations->getAllDefault($table_name , $primary_key);
 $page_title = 'Clients' ;
@@ -11,7 +12,7 @@ $data_keys = [
     'id_client',
     'nom_client',
     'prenom_client',
-    'indicatif',
+    'photoprofil',
     'tel_client',
     'email_client',
     'token',
@@ -19,14 +20,15 @@ $data_keys = [
     'etat_client',
     'communeUser',
     'adresseUser',
-    'paysUser',
+    'codereinit',
+    'expirationcode',
     'date_creation_client',
 ];
 $table_fields = [
     'Id',
     'Nom',
     'Prenom',
-    'Indicatif',
+    'Photo',
     'Numero',
     'Email',
     'Token',
@@ -34,12 +36,14 @@ $table_fields = [
     'Etat',
     'Commune',
     'Adresse',
-    'Pays',
+    'Code reinitialisation',
+    'Expiration code',
     'Date de creation',
 ];
 $display_addBtn = true;
 $displayEditBtn = true;
-$deleteBtn_selector = 'btn-deleteClient';
+$deleteBtn_selector = 'btn-deleteUser';
+$deleteBtn_name = 'btn-deleteUser';
 $addBtn_selector = 'btn-addClient';
 $editBtn_selector = 'btn-editUser';
 

@@ -1,6 +1,5 @@
 <?php
-
-
+$row = $records[0];
 $pays = ["Afghanistan",
 "Afrique du Sud",
 "Albanie",
@@ -225,82 +224,53 @@ $indicatifs = [
     "+995", "+995", "+373", "+90", "+252", "+374"
 ];
 
-$input_id = [
-    'nom_user',
-    'prenom_user',
-    'tel_user',
-    'email_user',
-    'token',
-    'mdp_user',
-    'etat_user',
-    'communeUser',
-    'adresseUser',
-];
-$data_keys = [
-    'nom',
-    'prenom',
-    'tel',
-    'email',
-    'token',
-    'mdp',
-    'etat',
-    'commune',
-    'adresse',
-    
-];
-
-
-
 ?>
 <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTitle">Editer un element</h5>
+                <h5 class="modal-title" id="modalTitle">Modifier un element</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editIndicateurForm" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-6 mb-6">
+                <form id="editIndicateurForm">
+                <input type="hidden" name="id" id="id_indic" value="">
+
+                <div class="row">
+                    <div class="col-6 mb-6">
                             <label for="indicatif" class="form-label">
                                 INDICATIF
                             </label>
-                            <select class="w-100 select" name="indicatif" id="indicatif">
+                            <select class="w-100 select" name="indicatif" id="indicatif2">
                                 <?php foreach ($indicatifs as $indicatif): ?>
                                 <option value="<?= $indicatif ?>"><?= $indicatif ?> </option>
                                 <?php endforeach; ?>
                             </select>
-                        </div>
-                        <div class="col-6 mb-6">
-                            <label for="indicatif" class="form-label">
+                    </div>  
+                        
+                    <div class="col-6 mb-6">
+                            <label for="pays" class="form-label">
                                 PAYS
                             </label>
-                            <select class="w-100 select" name="pays" id="pays">
-                                <?php foreach ($pays as $pays): ?>
-                                <option value="<?= $pays ?>"><?= $pays ?> </option>
+                            <select class="w-100 select" name="pays" id="pays2">
+                                <?php foreach ($pays as $etat): ?>
+                                <option value="<?= $etat ?>"><?= $etat ?> </option>
                                 <?php endforeach; ?>
                             </select>
-                        </div>
-                            
-                        <?php for ($i = 0; $i < count($data_keys); $i++):
-                            $labelle =$data_keys[$i];
-                            $field = $data_keys[$i];
-                            ?>
-                        <div class="col-6 mb-6">
-                            <label for="<?= $input_id[$i] ?>" class="form-label">
-                                <?= $labelle ?>
+                    </div> 
+                                                                                                                                                                                                               
+                    <div class="col-6 mb-6">
+                            <label for="flag" class="form-label">
+                                DRAPEAU
                             </label>
-                            <input type="<?php echo $field == 'id_user' ? 'number' : 'text'; ?>"  class="form-control" id="<?= $input_id[$i] ?>1"
-                                name="<?= $input_id[$i] ?>"
-                                placeholder="<?= $field ?>" />
-                        </div>
-                        <?php endfor; ?>
-                    </div>
+                            <input class="form-control" type="file" id="flag2" name="flag" />
+                    </div>  
+                </div>
             </div>
+            
             <div class="modal-footer">
                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="submit" class="btn btn-primary" id="editBtn">Editer</button>
+                <button type="submit" class="btn btn-primary" id="addBtn">Modifier</button>
             </div>
         </form>
         </div>

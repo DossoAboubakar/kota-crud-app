@@ -13,8 +13,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
             exit;
         }
         $id = (int)$_GET['id'];
-        $success = $operations->deleteItem('laclef_images_agence', 'id_images_agence', $id);
-        http_response_code(response_code: 200);
+        $success = $operations->deleteItem('myclean_image_annonce', 'id_image_annonce', $id);
+        http_response_code( 200);
         } catch (\Throwable $th) {
             throw new Exception($th->getMessage(),500);
         }
@@ -28,8 +28,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 exit;
             }
             $id = (int)$_GET['id'];
-            $success = $operations->getItemById('laclef_image_agence', 'id_image_annonce', $id);
-            http_response_code(response_code: 200);
+            $success = $operations->getItemById('myclean_image_annonce', 'id_image_annonce', $id);
+            http_response_code(200);
             $response = [
                 'success' => true,
                 'message' => 'données récupérées avec succes',
@@ -61,7 +61,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     }
                 
                     $operations->updateRow(
-                        'laclef_image_agence', 
+                        'myclean_image_annonce', 
                         ['id_user', 'id_annonce', 'libelle_image'], 
                         [$id_client, $id_annonce, $imagePath], 
                         'id_image_annonce = ?', 
@@ -79,7 +79,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 try {
                     $id_client = $_POST['id_client'];
                     $id_annonce = $_POST['id_annonce'];
-                    $date = date('Y-m-d H:i:s');
+                    $date = date('Y-m-d');  // Only date, no time;
                     $uploadDir = 'uploads/';
             
                     if (!is_dir($uploadDir)) {
@@ -109,7 +109,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     move_uploaded_file($image['tmp_name'], $imagePath);
             
                     $operations->insertNewRow(
-                        'laclef_image_agence',
+                        'myclean_image_annonce',
                         ['id_user','id_annonce', 'libelle_image','date_crea'],
                         [$id_client, $id_annonce,$imagePath,$date]
                     );

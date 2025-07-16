@@ -73,7 +73,7 @@ export function addCommodite() {
     })
     .catch(function (error) {
       console.error("Erreur lors de l'ajout:", error);
-      alert("veuillez remplir tout les champs")
+      alert("veuillez remplir tout les champs");
     });
 }
 

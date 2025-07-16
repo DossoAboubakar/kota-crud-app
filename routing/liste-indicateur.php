@@ -13,8 +13,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
             exit;
         }
         $id = (int)$_GET['id'];
-        $success = $operations->deleteItem('laclef_liste_indicateur', 'id_indic', $id);
-        http_response_code(response_code: 200);
+        $success = $operations->deleteItem('myclean_liste_indicateur', 'id_indic', $id);
+        http_response_code(200);
         } catch (\Throwable $th) {
             throw new Exception($th->getMessage(),500);
         }
@@ -28,8 +28,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 exit;
             }
             $id = (int)$_GET['id'];
-            $success = $operations->getItemById('laclef_liste_indicateur', 'id_indic', $id);
-            http_response_code(response_code: 200);
+            $success = $operations->getItemById('myclean_liste_indicateur', 'id_indic', $id);
+            http_response_code(200);
             $response = [
                 'success' => true,
                 'message' => 'données récupérées avec succes',
@@ -53,15 +53,18 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $indicatif = $_POST['indicatif'];
                 $uploadDir = 'uploads/';
                 $imagePath = null;
-                
+                $image = $_FILES['flag'];
+                $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                $imageExtension = pathinfo($image['name'], PATHINFO_EXTENSION);
+                $imageNewName = uniqid('img_') . '.' . $imageExtension; 
                 
                     if ($drapeau && $drapeau['error'] === UPLOAD_ERR_OK) {
-                        $imagePath = $uploadDir . uniqid() . '_' . basename($drapeau['name']);
+                        $imagePath = $uploadDir . $imageNewName;
                         move_uploaded_file($drapeau['tmp_name'], $imagePath);
                     }
                 
                     $operations->updateRow(
-                        'laclef_liste_indicateur', 
+                        'myclean_liste_indicateur', 
                         ['pays', 'drapeau', 'libelle'], 
                         [$pays, $imagePath, $indicatif], 
                         'id_indic = ?', 
@@ -109,7 +112,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     move_uploaded_file($image['tmp_name'], $imagePath);
             
                     $operations->insertNewRow(
-                        'laclef_liste_indicateur',
+                        'myclean_liste_indicateur',
                         ['pays','drapeau', 'libelle'],
                         [$pays, $imagePath,$indicatif]
                     );
@@ -139,3 +142,4 @@ switch ($_SERVER['REQUEST_METHOD']) {
         echo json_encode(['error' => 'Méthode non autorisée']);
         break;
 }
+                                                                                     

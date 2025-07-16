@@ -61,7 +61,6 @@ export function addCommune() {
 }
 
 export function updateCommune(formData) {
-  // formData.append("_method", "PUT");
   const params = new URLSearchParams();
   formData.forEach((value, key) => {
     params.append(key, value);

@@ -49,10 +49,10 @@ try {
         case 'api/alertesLocalites/crudOps':
                         include('routing/alerte-localite.php');
                         break;
-        case 'Annees':
-                require('src/views/annees.php');
+        case 'annee':
+                require('src/views/annee.php');
                 break;
-        case 'api/annees/crudOps':
+        case 'api/annee/crudOps':
                         include('routing/annee.php');
                         break;
         case 'Annonces':
@@ -82,7 +82,7 @@ try {
         case 'CategoriesClients':
                 require('src/views/categories-clients.php');
                 break;
-        case 'api/categoriesClients/crudOps':
+        case 'api/categoriesClient/crudOps':
                         include('routing/categorie-client.php');
                         break;
         case 'Commodites':

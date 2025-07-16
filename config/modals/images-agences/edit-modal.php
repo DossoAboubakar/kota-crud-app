@@ -1,4 +1,13 @@
-
+<?php $sql = "SELECT * FROM myclean_client";
+$statement = $operations->connection->prepare($sql);
+$statement->execute();
+$clients = $statement->fetchAll(\PDO::FETCH_ASSOC); 
+?>
+<?php $sql = "SELECT * FROM myclean_annonce";
+$statement = $operations->connection->prepare($sql);
+$statement->execute();
+$annonces = $statement->fetchAll(\PDO::FETCH_ASSOC); 
+?>
 <?php
 $row = $records[0];
 ?>                
@@ -21,8 +30,8 @@ $row = $records[0];
                                 CLIENT
                             </label>
                             <select class="w-100 select" name="client_of_favoris" id="id_user">
-                                <?php foreach ($records as $record): ?>
-                                <option value="<?= $record['id_client'] ?>"><?= $record['nom_client'] ?> | <?= $record['prenom_client'] ?> </option>
+                                <?php foreach ($clients as $client): ?>
+                                <option value="<?= $client['id_client'] ?>"><?= $client['nom_client'] ?> | <?= $client['prenom_client'] ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>       
@@ -30,9 +39,9 @@ $row = $records[0];
                             <label for="id_annonce" class="form-label">
                                 Annonce
                             </label>
-                            <select class=" w-100 select" name="annonce_of_favoris" id="id_annonce">
-                                <?php foreach ($records as $record): ?>
-                                <option value="<?= $record['id_annonce'] ?>"><?= $record['libelle_annonce'] ?> | <?= $record['prix_annonce'].''.'FCFA' ?> </option>
+                            <select class=" w-100 select" name="annonce_of_favoris" id="id_annonce2">
+                                <?php foreach ($annonces as $annonce): ?>
+                                <option value="<?= $annonce['id_annonce'] ?>"><?= $annonce['libelle_annonce'] ?> | <?= $annonce['prix_annonce'].''.'FCFA' ?> </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>   
@@ -42,8 +51,6 @@ $row = $records[0];
                         </label>
                             <input class="form-control" type="file" id="imageAgence" name="imageAgence" />
                         </div>
-                        
-       
                     </div>
             </div>
             <div class="modal-footer">

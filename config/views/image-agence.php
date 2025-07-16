@@ -2,7 +2,7 @@
 
 use Application\CrudRepository\CrudImageAgence;
 $primary_key='id_image_annonce';
-$table_name ='laclef_image_agence';
+$table_name ='myclean_image_annonce';
 $operations = new CrudImageAgence();
 $records = $operations->getImageAgence();
 $data_keys = [
@@ -15,7 +15,6 @@ $data_keys = [
     'libelle_image',
     'date_crea'
 ];
-
 $page_title = 'Images des agences';
 $table_fields = [
     'Id',
@@ -31,3 +30,5 @@ $display_addBtn = true;
 $displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteImageAgence';
 $editBtn_selector = 'btn-editImageAgence';
+$deleteBtn_name = 'btn-deleteImageAgence';
+

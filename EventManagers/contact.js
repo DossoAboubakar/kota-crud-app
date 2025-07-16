@@ -102,7 +102,6 @@ export function addContact() {
 }
 
 export function updateContact(formData) {
-  // formData.append("_method", "PUT");
   const params = new URLSearchParams();
   formData.forEach((value, key) => {
     params.append(key, value);

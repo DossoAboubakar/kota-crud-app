@@ -249,8 +249,6 @@ $data_keys = [
     
 ];
 
-
-
 ?>
 <div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">

@@ -2,7 +2,7 @@
 
 use Application\CrudRepository\CrudRequests;
 $primary_key='id_annonce';
-$table_name ='laclef_annonce';
+$table_name ='myclean_annonce';
 $operations = new CrudRequests();
 $records = $operations->getAllDefault($table_name , $primary_key);
 $data_keys = [
@@ -114,7 +114,7 @@ $table_fields = [
     'formatvideo',
     'lienvideo'
 ];
-$display_addBtn = false;
+$display_addBtn = true;
 $displayEditBtn = true;
 $deleteBtn_selector = 'btn-deleteAnnonce';
 $editBtn_selector = 'btn-editAnnonce';
